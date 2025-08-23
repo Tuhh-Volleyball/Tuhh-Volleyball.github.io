@@ -1,14 +1,34 @@
-# Tuhh-Volleyball
+# TUHH Volleyball 🏐  
 
-Das wirs eines Tages eine professionelle Webseite. 
+Willkommen bei **TUHH Volleyball**!  
+Wir sind eine junge Gruppe von Studierenden und Freunden, die gemeinsam Volleyball spielen – locker, motiviert und mit viel Spaß.  
 
-Für das erste hier ist unser Link zu unserer WhatsApp Gruppe. Dort erhalten alle Interessenten die Trainingszeiten.
+---
 
-https://chat.whatsapp.com/JVqHSCgaIVz2G8zTU4NtA2?mode=ac_t
+## 📅 Training & Infos  
+Alle Trainingszeiten und Neuigkeiten teilen wir in unserer WhatsApp-Gruppe:  
 
-Ihr freue mich auf euch.
+👉 [Hier der Einladungslink zur WhatsApp-Gruppe](https://chat.whatsapp.com/JVqHSCgaIVz2G8zTU4NtA2?mode=ac_t)  
 
-schöne Grüsse 
+---
 
-eure orga Truppe :)
-name1, 2, 3
+## 🙌 Wer wir sind  
+Wir sind rund 20–25 Leute zwischen 20 und 25 Jahren, die Lust auf Volleyball haben.  
+Ob Anfänger oder erfahren – jede*r ist willkommen!  
+
+---
+
+## ✨ Unsere Vision  
+Dies ist erst der Anfang – eines Tages soll daraus eine **richtige Vereinswebseite** entstehen.  
+Bis dahin halten wir euch hier und in der WhatsApp-Gruppe auf dem Laufenden.  
+
+---
+
+## 💌 Kontakt  
+Schreibt uns gerne in der WhatsApp-Gruppe oder sprecht uns direkt beim Training an.  
+
+---
+
+Viele Grüße  
+Eure Orga-Truppe 🙂  
+**Alexandra, Clemens, Alexander**
