@@ -14,7 +14,7 @@ Alle Trainingszeiten und Neuigkeiten teilen wir in unserer WhatsApp-Gruppe.
 👉 **Wichtig:** Der folgende Link führt zunächst in eine **Interessierten-Gruppe**, in der wir alle sammeln.  
 Von dort bekommt ihr die Infos und Zugang zur eigentlichen Trainingsgruppe.  
 
-👉 [Hier der Einladungslink für Interessierte](https://chat.whatsapp.com/JVqHSCgaIVz2G8zTU4NtA2?mode=ac_t)  
+👉 [Hier der Einladungslink für Interessierte](https://bit.ly/volleyballtuhh)  
 
 ---
 
