@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-theme="auto">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,14 +7,23 @@
   <meta name="description" content="TUHH Volleyball AG – Infos, Training, Vision, Kontakt">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <style>
+    /* Kleine kosmetische Helfer */
     header img{max-width:180px;height:auto;display:block;margin:0 auto 1rem;}
     header h1, header p{text-align:center}
-    figure{margin:0}
-    .qr{max-width:220px;height:auto;border-radius:12px}
+    .topbar{display:flex;justify-content:flex-end;gap:.5rem;margin: .5rem auto 0;max-width:min(1100px,92vw);}
+    .topbar button{white-space:nowrap}
     .center{text-align:center}
+    .qr{max-width:220px;height:auto;border-radius:12px}
+    figure{margin:0}
+    footer{margin-top:2rem}
   </style>
 </head>
 <body>
+  <!-- Theme-Umschalter oben rechts -->
+  <div class="topbar">
+    <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗 Auto</button>
+  </div>
+
   <header class="container">
     <img src="assets/logo.png" alt="TUHH Volleyball Logo">
     <h1>🏐 TUHH Volleyball</h1>
@@ -27,7 +36,7 @@
       <p>Alle Trainingszeiten und Neuigkeiten teilen wir in unserer WhatsApp-Gruppe.</p>
       <p>👉 <strong>Wichtig:</strong> Der folgende Link führt zunächst in eine <em>Interessierten-Gruppe</em>. Von dort bekommt ihr die Infos und Zugang zur eigentlichen Trainingsgruppe.</p>
 
-      <!-- Link + QR nebeneinander auf großen Screens -->
+      <!-- Link + QR nebeneinander auf großen Screens (Pico .grid) -->
       <div class="grid">
         <div class="center">
           <p><a role="button" href="https://bit.ly/volleyballtuhh" target="_blank" rel="noopener">Hier der Einladungslink für Interessierte</a></p>
@@ -35,7 +44,7 @@
         </div>
         <div class="center">
           <figure>
-            <img class="qr" src="assets/qr.jpg" alt="QR-Code zum WhatsApp-Einladungslink">
+            <img class="qr" src="assets/qr.png" alt="QR-Code zum WhatsApp-Einladungslink">
             <figcaption class="secondary">Oder QR-Code scannen 📱</figcaption>
           </figure>
         </div>
@@ -59,6 +68,45 @@
       </ul>
       <p>Viele Grüße,<br>Eure Orga-Truppe 🙂<br><strong>Alexandra, Clemens, Sascha</strong></p>
     </article>
+
+    <footer class="center">
+      <small>Letztes Update: Aug 2025</small>
+    </footer>
   </main>
+
+  <!-- Theme-Script: merkt sich die Auswahl in localStorage -->
+  <script>
+    (function(){
+      const root = document.documentElement;
+      const btn  = document.getElementById('themeToggle');
+      const KEY  = 'tuhh-volleyball-theme';
+      const valid = new Set(['auto','light','dark']);
+
+      function label(mode){
+        return mode === 'light' ? '☀️ Hell'
+             : mode === 'dark'  ? '🌙 Dunkel'
+             : '🌗 Auto';
+      }
+
+      function apply(mode){
+        if(!valid.has(mode)) mode = 'auto';
+        root.setAttribute('data-theme', mode);
+        btn.textContent = label(mode);
+        try { localStorage.setItem(KEY, mode); } catch {}
+      }
+
+      // Start: gespeichertes Theme oder 'auto'
+      let start = 'auto';
+      try { start = localStorage.getItem(KEY) || 'auto'; } catch {}
+      apply(start);
+
+      // Klick rotiert: auto -> light -> dark -> auto
+      btn.addEventListener('click', () => {
+        const cur = root.getAttribute('data-theme') || 'auto';
+        const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+        apply(next);
+      });
+    })();
+  </script>
 </body>
 </html>
