@@ -7,47 +7,49 @@
   <meta name="description" content="TUHH Volleyball AG – Infos, Training, Vision, Kontakt">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <style>
-    header img {
-      max-width: 180px;
-      height: auto;
-      display: block;
-      margin: 0 auto 1rem auto;
-    }
-    header h1 {
-      text-align: center;
-    }
-    header p {
-      text-align: center;
-    }
+    header img{max-width:180px;height:auto;display:block;margin:0 auto 1rem;}
+    header h1, header p{text-align:center}
+    figure{margin:0}
+    .qr{max-width:220px;height:auto;border-radius:12px}
+    .center{text-align:center}
   </style>
 </head>
 <body>
   <header class="container">
     <img src="assets/logo.png" alt="TUHH Volleyball Logo">
     <h1>🏐 TUHH Volleyball</h1>
-    <p>Willkommen bei <strong>TUHH Volleyball</strong>!<br>
-       Wir sind eine junge Gruppe von Studierenden und Freunden, die gemeinsam Volleyball spielen – locker, motiviert und mit viel Spaß.</p>
+    <p>Willkommen bei <strong>TUHH Volleyball</strong>! Wir sind eine junge Gruppe von Studierenden und Freunden, die gemeinsam Volleyball spielen – locker, motiviert und mit viel Spaß.</p>
   </header>
 
   <main class="container">
     <article>
       <h2>📅 Training & Infos</h2>
       <p>Alle Trainingszeiten und Neuigkeiten teilen wir in unserer WhatsApp-Gruppe.</p>
-      <p>👉 <strong>Wichtig:</strong> Der folgende Link führt zunächst in eine <em>Interessierten-Gruppe</em>, in der wir alle sammeln.<br>
-         Von dort bekommt ihr die Infos und Zugang zur eigentlichen Trainingsgruppe.</p>
-      <p><a role="button" href="https://bit.ly/volleyballtuhh" target="_blank">Hier der Einladungslink für Interessierte</a></p>
+      <p>👉 <strong>Wichtig:</strong> Der folgende Link führt zunächst in eine <em>Interessierten-Gruppe</em>. Von dort bekommt ihr die Infos und Zugang zur eigentlichen Trainingsgruppe.</p>
+
+      <!-- Link + QR nebeneinander auf großen Screens -->
+      <div class="grid">
+        <div class="center">
+          <p><a role="button" href="https://bit.ly/volleyballtuhh" target="_blank" rel="noopener">Hier der Einladungslink für Interessierte</a></p>
+          <p class="secondary">Auf dem Handy einfach tippen.</p>
+        </div>
+        <div class="center">
+          <figure>
+            <img class="qr" src="assets/qr.png" alt="QR-Code zum WhatsApp-Einladungslink">
+            <figcaption class="secondary">Oder QR-Code scannen 📱</figcaption>
+          </figure>
+        </div>
+      </div>
     </article>
 
     <article>
       <h2>🙌 Wer wir sind</h2>
-      <p>Wir sind rund 20–25 Leute zwischen 20 und 25 Jahren, die Lust auf Volleyball haben.<br>
-         Ob Anfänger oder erfahren – jede*r ist willkommen!</p>
+      <p>Wir sind rund 20–25 Leute zwischen 20 und 25 Jahren. Ob Anfänger oder erfahren – jede*r ist willkommen!</p>
     </article>
 
     <article>
       <h2>✨ Unsere Vision</h2>
-      <p>Dies ist erst der Anfang – eines Tages soll daraus eine <strong>richtige Vereinswebseite</strong> entstehen.<br>
-         Bis dahin halten wir euch hier und in der WhatsApp-Gruppe auf dem Laufenden.</p>
+      <p>Dies ist erst der Anfang – eines Tages soll daraus eine <strong>richtige Vereinswebseite</strong> entstehen. Bis dahin halten wir euch hier und in der WhatsApp-Gruppe auf dem Laufenden.</p>
     </article>
 
     <article>
@@ -55,9 +57,7 @@
       <ul>
         <li>E-Mail (zurzeit noch nicht funktionsfähig): <a href="mailto:volleyball@tuhh.de">volleyball@tuhh.de</a></li>
       </ul>
-      <p>Viele Grüße,<br>
-         Eure Orga-Truppe 🙂<br>
-         <strong>Alexandra, Clemens, Sascha</strong></p>
+      <p>Viele Grüße,<br>Eure Orga-Truppe 🙂<br><strong>Alexandra, Clemens, Sascha</strong></p>
     </article>
   </main>
 </body>
