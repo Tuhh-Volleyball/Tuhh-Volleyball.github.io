@@ -31,7 +31,7 @@ Bis dahin halten wir euch hier und in der WhatsApp-Gruppe auf dem Laufenden.
 ---
 
 ## 💌 Kontakt   
-- E-Mail (zurzeit noch nicht funktionsfähig):  
+- E-Mail:  
   [volleyball@tuhh.de](mailto:volleyball@tuhh.de?subject=Deine%20Anfrage%20zur%20Volleyball%20AG&body=Hallo%20liebes%20Orga-Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Volleyball%20AG%20und%20w%C3%BCrde%20gerne%20weitere%20Infos%20zu%20den%20Trainingszeiten%20erhalten.%0A%0AViele%20Gr%C3%BC%C3%9Fe%2C%0A[Dein%20Name])  
 
 ---
