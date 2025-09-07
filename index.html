@@ -70,9 +70,9 @@
       <div class="grid">
         <div>
           <nav class="center" style="margin-bottom:.5rem">
-            <button class="secondary outline" data-view="MONTH">Monat</button>
-            <button class="secondary outline" data-view="AGENDA">Agenda</button>
+            <button class="secondary outline" id="calendarToggle">Monat</button>
           </nav>
+
 
           <div class="calendar-frame" style="position:relative;width:100%;min-height:600px">
             <iframe
@@ -150,22 +150,36 @@
       });
     })();
   </script>
-  <script>
+<script>
   (function(){
     const frame = document.getElementById('gcalFrame');
-    if(!frame) return;
+    const btn   = document.getElementById('calendarToggle');
+    if(!frame || !btn) return;
 
+    function getMode(){
+      const url = new URL(frame.src);
+      return url.searchParams.get('mode') || 'AGENDA';
+    }
     function setMode(mode){
       const url = new URL(frame.src);
-      url.searchParams.set('mode', mode); // 'MONTH' oder 'AGENDA'
+      url.searchParams.set('mode', mode);
       frame.src = url.toString();
+      btn.textContent = (mode === 'MONTH') ? 'Agenda' : 'Monat';
     }
 
-    document.querySelectorAll('nav [data-view]').forEach(btn=>{
-      btn.addEventListener('click', ()=> setMode(btn.dataset.view));
+    // Klick = Toggle zwischen MONTH und AGENDA
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const cur = getMode();
+      setMode(cur === 'MONTH' ? 'AGENDA' : 'MONTH');
     });
+
+    // Initial Beschriftung richtig setzen
+    setMode(getMode());
   })();
 </script>
+
+
 
 <script>
   (function(){
