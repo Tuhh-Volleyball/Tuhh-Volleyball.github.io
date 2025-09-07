@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="de" data-theme="auto">
+<html lang="de" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Volleyball AG – TUHH</title>
-  <meta name="description" content="TUHH Volleyball AG – Infos, Training, Vision, Kontakt">
+  <meta name="description" content="TUHH Volleyball AG - Infos, Training, Vision, Kontakt">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <style>
     /* Kleine kosmetische Helfer */
@@ -122,62 +122,64 @@
       const root = document.documentElement;
       const btn  = document.getElementById('themeToggle');
       const KEY  = 'tuhh-volleyball-theme';
-      const valid = new Set(['auto','light','dark']);
+      const valid = new Set(['light','dark']);
 
       function label(mode){
-        return mode === 'light' ? '☀️ Hell'
-             : mode === 'dark'  ? '🌙 Dunkel'
-             : '🌗 Auto';
+        return mode === 'light' ? '☀️ Hell' : '🌙 Dunkel';
       }
-
+      function normalize(mode){
+        // Falls noch alter Wert 'auto' in localStorage liegt → auf 'light' setzen
+        return valid.has(mode) ? mode : 'light';
+      }
       function apply(mode){
-        if(!valid.has(mode)) mode = 'auto';
+        mode = normalize(mode);
         root.setAttribute('data-theme', mode);
         btn.textContent = label(mode);
         try { localStorage.setItem(KEY, mode); } catch {}
       }
 
-      // Start: gespeichertes Theme oder 'auto'
-      let start = 'auto';
-      try { start = localStorage.getItem(KEY) || 'auto'; } catch {}
+      // Startmodus: gespeicherter Wert oder 'light'
+      let start = 'light';
+      try { start = normalize(localStorage.getItem(KEY) || 'light'); } catch {}
       apply(start);
 
-      // Klick rotiert: auto -> light -> dark -> auto
+      // Klick toggelt zwischen light ↔ dark
       btn.addEventListener('click', () => {
-        const cur = root.getAttribute('data-theme') || 'auto';
-        const next = cur === 'auto' ? 'light' : cur === 'light' ? 'dark' : 'auto';
+        const cur = root.getAttribute('data-theme') || 'light';
+        const next = (cur === 'light') ? 'dark' : 'light';
         apply(next);
       });
     })();
   </script>
-<script>
-  (function(){
-    const frame = document.getElementById('gcalFrame');
-    const btn   = document.getElementById('calendarToggle');
-    if(!frame || !btn) return;
+<!-- Kalender-Ansicht Umschalter -->
+  <script>
+    (function(){
+      const frame = document.getElementById('gcalFrame');
+      const btn   = document.getElementById('calendarToggle');
+      if(!frame || !btn) return;
 
-    function getMode(){
-      const url = new URL(frame.src);
-      return url.searchParams.get('mode') || 'AGENDA';
-    }
-    function setMode(mode){
-      const url = new URL(frame.src);
-      url.searchParams.set('mode', mode);
-      frame.src = url.toString();
-      btn.textContent = (mode === 'MONTH') ? 'Agenda' : 'Monat';
-    }
+      function getMode(){
+        const url = new URL(frame.src);
+        return url.searchParams.get('mode') || 'AGENDA';
+      }
+      function setMode(mode){
+        const url = new URL(frame.src);
+        url.searchParams.set('mode', mode);
+        frame.src = url.toString();
+        btn.textContent = (mode === 'MONTH') ? 'Agenda' : 'Monat';
+      }
 
-    // Klick = Toggle zwischen MONTH und AGENDA
-    btn.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const cur = getMode();
-      setMode(cur === 'MONTH' ? 'AGENDA' : 'MONTH');
-    });
+      // Klick = Toggle zwischen MONTH und AGENDA
+      btn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const cur = getMode();
+        setMode(cur === 'MONTH' ? 'AGENDA' : 'MONTH');
+      });
 
-    // Initial Beschriftung richtig setzen
-    setMode(getMode());
-  })();
-</script>
+      // Initial Beschriftung richtig setzen
+      setMode(getMode());
+    })();
+  </script>
 
 
 
