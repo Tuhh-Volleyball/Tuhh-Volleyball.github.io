@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Volleyball AG - TUHH</title>
   <meta name="description" content="TUHH Volleyball AG - Infos, Training, Vision, Kontakt">
+  <link rel="icon" href="assets/ball.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/ball.png">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
 <style>
   /* Smooth Scrolling für Sprunglinks */
@@ -56,6 +58,26 @@
   width: auto;
   margin: 0 0 0 0;        /* KEIN bottom-Margin mehr */
   vertical-align: -0.15em;   /* optisch mittig zur Grundlinie */
+}
+.footer {
+  margin-top: 2rem;
+  color: var(--muted-color);
+}
+
+.footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.asta-logo {
+  height: 24px;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 0.25em;
 }
 
 
@@ -174,18 +196,24 @@
       <p>Viele Grüße,<br>Eure Orga-Truppe 🙂<br><strong>Alexandra, Clemens, Sascha</strong></p>
     </article>
 
-    <footer class="center">
-      <small>Letztes Update: Sept 2025</small>
-      <div style="margin:1rem 0">
+    <footer class="center footer">
+      <p>
+        <small>© 2025 Volleyball AG TUHH</small>
+      </p>
+
+      <p>
         <a href="impressum.html">Impressum</a>
-      </div>
-      <div>
+        ·
         <a href="https://www.asta.tuhh.de/" target="_blank" rel="noopener">
-          <img src="assets/asta.png" alt="AStA TUHH Logo" style="max-height:50px;width:auto">
+          <img src="assets/asta.png" alt="AStA TUHH Logo" class="asta-logo">
         </a>
-      </div>
-      <small>Copyright © 2025 - Volleyball AG</small>
+      </p>
+
+      <p>
+        <small>Letztes Update: Sept 2025</small>
+      </p>
     </footer>
+
 
   </main>
 
