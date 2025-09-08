@@ -32,7 +32,7 @@
   }
 
   /* Deine bisherigen Helfer (leicht bereinigt: .topbar kann weg) */
-  header img{max-width:180px;height:auto;display:block;margin:0 auto 1rem;}
+  header > img{max-width:180px;height:auto;display:block;margin:0 auto 1rem;}
   header h1, header p{text-align:center}
   .center{text-align:center}
   .qr{max-width:220px;height:auto;border-radius:12px}
@@ -46,6 +46,19 @@
   @media (max-width: 600px){
     .mobile-break { display:block; margin-top:.25rem; }
   }
+  .tuhh {
+  color: #00778A; /* TUHH-Corporate-Farbe (Petrolgrün) */
+  font-weight: bold;
+}
+.logo-ball{
+  display: inline-block;     /* nicht blockig → keine neue Zeile */
+  height: 1em;               /* so hoch wie die Schrift */
+  width: auto;
+  margin: 0 0 0 0;        /* KEIN bottom-Margin mehr */
+  vertical-align: -0.15em;   /* optisch mittig zur Grundlinie */
+}
+
+
 </style>
 
 </head>
@@ -53,7 +66,13 @@
 <!-- Sticky Top-Nav -->
 <nav class="container topnav" aria-label="Hauptnavigation">
   <ul>
-    <li><strong>🏐 TUHH Volleyball</strong></li>
+    <li>
+  <strong>
+    <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
+    TUHH Volleyball
+  </strong>
+</li>
+
   </ul>
   <ul>
     <li><a href="#training">Training</a></li>
@@ -70,8 +89,11 @@
 
 
   <header class="container">
-    <img src="assets/logo.png" alt="TUHH Volleyball Logo">
-    <h1>🏐 TUHH Volleyball</h1>
+    <h1>
+      <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
+      <span class="tuhh">TUHH</span> Volleyball
+    </h1>
+
     <p>Willkommen bei der <strong>Volleyball AG</strong>! <br>
     Wir sind eine junge Gruppe von Studierenden und Freunden, die gemeinsam Volleyball spielen - locker, motiviert und mit viel Spaß.</p>
   </header>
