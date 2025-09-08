@@ -6,28 +6,68 @@
   <title>Volleyball AG - TUHH</title>
   <meta name="description" content="TUHH Volleyball AG - Infos, Training, Vision, Kontakt">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
-  <style>
-    /* Kleine kosmetische Helfer */
-    header img{max-width:180px;height:auto;display:block;margin:0 auto 1rem;}
-    header h1, header p{text-align:center}
-    .topbar{display:flex;justify-content:flex-end;gap:.5rem;margin: .5rem auto 0;max-width:min(1100px,92vw);}
-    .topbar button{white-space:nowrap}
-    .center{text-align:center}
-    .qr{max-width:220px;height:auto;border-radius:12px}
-    figure{margin:0}
-    footer{margin-top:2rem}
+<style>
+  /* Smooth Scrolling für Sprunglinks */
+  html { scroll-behavior: smooth; }
 
-    /* Zusatz für Einladungsmodus*/
-    .hidden{display:none !important}
-    .badge{display:inline-block;padding:.15rem .5rem;border-radius:.5rem;font-size:.8rem}
-    .badge.ok{background:var(--primary-focus);color:var(--primary-inverse)}
-  </style>
+  /* Damit Anker (#termine etc.) nicht unter der sticky Nav verschwinden */
+  article[id] { scroll-margin-top: 84px; }
+
+  /* Sticky Top-Nav (ersetzt deine alte .topbar) */
+  .topnav{
+    position: sticky; top: 0; z-index: 1000;
+    backdrop-filter: saturate(1.2) blur(8px);
+    background: color-mix(in oklab, var(--background-color), transparent 15%);
+    border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
+    border-radius: 0 0 12px 12px;
+    margin-bottom: .5rem;
+  }
+  @media (max-width: 800px){
+    .topnav ul:last-child { gap: .25rem; }
+    .topnav a { white-space: nowrap; }
+  }
+  .topnav a.active{
+    text-decoration: underline;
+    text-underline-offset: .3em;
+  }
+
+  /* Deine bisherigen Helfer (leicht bereinigt: .topbar kann weg) */
+  header img{max-width:180px;height:auto;display:block;margin:0 auto 1rem;}
+  header h1, header p{text-align:center}
+  .center{text-align:center}
+  .qr{max-width:220px;height:auto;border-radius:12px}
+  figure{margin:0}
+  footer{margin-top:2rem}
+  .hidden{display:none !important}
+  .badge{display:inline-block;padding:.15rem .5rem;border-radius:.5rem;font-size:.8rem}
+  .badge.ok{background:var(--primary-focus);color:var(--primary-inverse)}
+
+  /* Nur-Handy-Umbruch vor dem Kalender-Link (falls du statt <br> die schicke Variante nutzt) */
+  @media (max-width: 600px){
+    .mobile-break { display:block; margin-top:.25rem; }
+  }
+</style>
+
 </head>
 <body>
-  <!-- Theme-Umschalter oben rechts -->
-  <div class="topbar">
-    <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗 Auto</button>
-  </div>
+<!-- Sticky Top-Nav -->
+<nav class="container topnav" aria-label="Hauptnavigation">
+  <ul>
+    <li><strong>🏐 TUHH Volleyball</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#termine">Termine</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+    <li>
+      <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗</button>
+    </li>
+  </ul>
+</nav>
+
 
   <header class="container">
     <img src="assets/logo.png" alt="TUHH Volleyball Logo">
@@ -37,7 +77,7 @@
   </header>
 
   <main class="container">
-    <article>
+    <article id="training">
       <h2>📅 Training & Infos <small id="inviteBadge" class="badge ok hidden">Einladungen heute aktiv</small></h2>
         <p>Alle Trainingszeiten und Neuigkeiten teilen wir in unserer WhatsApp-Gruppe.</p>
       
@@ -94,17 +134,17 @@
     </article>
 
 
-    <article>
+    <article id="team">
       <h2>🙌 Wer wir sind</h2>
       <p>Wir sind rund 20-25 Leute zwischen 20 und 25 Jahren. Ob Anfänger oder erfahren - jede*r ist willkommen!</p>
     </article>
 
-    <article>
+    <article id="vision">
       <h2>✨ Unsere Vision</h2>
       <p>Dies ist erst der Anfang - eines Tages soll daraus eine <strong>richtige Vereinswebseite</strong> entstehen. Bis dahin halten wir euch hier und in der WhatsApp-Gruppe auf dem Laufenden.</p>
     </article>
 
-    <article>
+    <article id="kontakt">
       <h2>✉️ Kontakt</h2>
       <ul>
         <li>E-Mail: <a href="mailto:volleyball@tuhh.de?subject=Deine%20Anfrage%20zur%20Volleyball%20AG&amp;body=Hallo%20liebes%20Orga-Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Volleyball%20AG%20und%20w%C3%BCrde%20gerne%20weitere%20Infos%20zu%20den%20Trainingszeiten%20erhalten.%0A%0AViele%20Gr%C3%BC%C3%9Fe%2C%0A%5BDein%20Name%5D">volleyball@tuhh.de</a></li>
