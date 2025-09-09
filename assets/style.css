@@ -2,14 +2,20 @@
 html { scroll-behavior: smooth; }
 article[id] { scroll-margin-top: 84px; }
 
-/* Sticky Top-Nav */
+/* Sticky Top-Nav (Glass-Effekt) */
 .topnav{
-  position: sticky; top: 0; z-index: 1000;
+  position: sticky; top: 0; z-index: 2000;                 /* Topbar über Backdrop */
   backdrop-filter: saturate(1.2) blur(8px);
   background: color-mix(in oklab, var(--background-color), transparent 15%);
   border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
   border-radius: 0 0 12px 12px;
   margin-bottom: .5rem;
+}
+
+/* Wenn das Menü offen ist: Topbar NICHT abdunkeln (Glass aus) */
+body:has(#menuBackdrop:not([hidden])) .topnav{
+  background: var(--card-background-color, var(--background-color));
+  backdrop-filter: none;
 }
 
 /* Brand-Zeile */
@@ -57,8 +63,8 @@ article[id] { scroll-margin-top: 84px; }
 /* ===== Mobiles Dropdown-Panel rechts unter dem ☰ ===== */
 .nav-drawer{
   position: absolute;
-  inset-block-start: calc(100% + 6px); /* unter der Brand-Zeile */
-  inset-inline-end: .5rem;             /* rechts bündig */
+  inset-block-start: calc(100% + 6px);   /* unter der Brand-Zeile */
+  inset-inline-end: .5rem;               /* rechts bündig */
   width: min(240px, 92vw);
 
   display:flex; flex-direction:column; gap:.25rem;
@@ -66,7 +72,7 @@ article[id] { scroll-margin-top: 84px; }
 
   border-radius: 12px;
   box-shadow: 0 12px 32px rgba(0,0,0,.35);
-  z-index: 1100; /* über Backdrop & Inhalt */
+  z-index: 2100;                          /* Panel über allem */
 }
 :root[data-theme="light"] .nav-drawer{
   background: var(--card-background-color, #fff);
@@ -95,9 +101,12 @@ article[id] { scroll-margin-top: 84px; }
   inset: 0;
   background: rgba(0,0,0,.35);
   backdrop-filter: blur(1px);
-  z-index: 1050;              /* unter dem Panel, über dem Inhalt */
+  z-index: 1500;                          /* unter Topbar, über Inhalt */
 }
 #menuBackdrop[hidden]{ display:none !important; }
+
+/* Seite nicht scrollen, wenn Menü offen */
+body:has(#menuBackdrop:not([hidden])){ overflow: hidden; }
 
 /* Responsive: unter 700px Desktop-Leiste ausblenden */
 @media (max-width:700px){
