@@ -10,139 +10,266 @@
   <link rel="apple-touch-icon" href="assets/ball.png">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <style>
-  /* Smooth Scrolling & Anker-Abstand */
-  html { scroll-behavior: smooth; }
-  article[id] { scroll-margin-top: 84px; }
+    /* Smooth Scrolling & Anker-Abstand */
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* Sticky Top-Nav */
-  .topnav{
-    position: sticky; top: 0; z-index: 1000;
-    backdrop-filter: saturate(1.2) blur(8px);
-    background: color-mix(in oklab, var(--background-color), transparent 15%);
-    border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
-    border-radius: 0 0 12px 12px;
-    margin-bottom: .5rem;
-  }
+    article[id] {
+      scroll-margin-top: 84px;
+    }
 
-  /* Brand-Zeile (links Titel, rechts Theme + Burger) */
-  .brand-row{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; }
-  .brand{ display:flex; align-items:center; gap:.4em; }
+    /* Sticky Top-Nav */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: saturate(1.2) blur(8px);
+      background: color-mix(in oklab, var(--background-color), transparent 15%);
+      border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
+      border-radius: 0 0 12px 12px;
+      margin-bottom: .5rem;
+    }
 
-  /* Rechts-inline: Theme + Burger */
-  .nav-inline{ display:flex; align-items:center; gap:.5rem; margin:0; margin-left: auto; }
-  .nav-inline li{ list-style:none; }
+    /* Brand-Zeile (links Titel, rechts Theme + Burger) */
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+    }
 
-  /* Desktop-Linkleiste (unter der Brand-Zeile) */
-  .nav-links-desktop{ display:flex; gap:.5rem; margin-top:.5rem; }
-  .nav-links-desktop li{ list-style:none; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .4em;
+    }
 
-  /* Burger-Button */
-  .menu-toggle{
-    background:none; border:1px solid var(--muted-border-color); border-radius:10px;
-    padding:.35rem .6rem; font-size:1.1rem; line-height:1; cursor:pointer;
-  }
+    /* Rechts-inline: Theme + Burger */
+    .nav-inline {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin: 0;
+      margin-left: auto;
+    }
 
-  /* Aufklappmenü (Mobile Drawer) */
-  .nav-drawer{
-    display:flex; flex-direction:column; gap:.25rem;
-    padding:.5rem 0 0; margin:0;
-    border-top:1px solid color-mix(in oklab, var(--muted-border-color), transparent 30%);
-  }
-  .nav-drawer li{ list-style:none; }
-  .nav-drawer[hidden]{ display:none !important; }
+    .nav-inline li {
+      list-style: none;
+    }
 
-  /* Responsive: unter 700px Desktop-Leiste ausblenden */
-  @media (max-width:700px){ .nav-links-desktop{ display:none; } }
+    /* Desktop-Linkleiste (unter der Brand-Zeile) */
+    .nav-links-desktop {
+      display: flex;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
 
-  /* Über 700px: Burger & Drawer ausblenden */
-  @media (min-width:701px){
-    .menu-toggle, #mobileMenu{ display:none !important; }
-  }
+    .nav-links-desktop li {
+      list-style: none;
+    }
 
-  /* Header-Logo oben (nicht das kleine Ball-Icon im H1!) */
-  header > img{
-    max-width:180px; height:auto; display:block; margin:0 auto 1rem;
-  }
-  header h1, header p{ text-align:center; }
+    /* Burger-Button */
+    .menu-toggle {
+      background: none;
+      border: 1px solid var(--muted-border-color);
+      border-radius: 10px;
+      padding: .35rem .6rem;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+    }
 
-  /* Kleinzeug */
-  .center{text-align:center}
-  .qr{max-width:220px;height:auto;border-radius:12px}
-  figure{margin:0}
-  footer{margin-top:2rem}
-  .hidden{display:none !important}
-  .badge{display:inline-block;padding:.15rem .5rem;border-radius:.5rem;font-size:.8rem}
-  .badge.ok{background:var(--primary-focus);color:var(--primary-inverse)}
+    /* Aufklappmenü (Mobile Drawer) */
+    .nav-drawer {
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+      padding: .5rem 0 0;
+      margin: 0;
+      border-top: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 30%);
+    }
 
-  /* Handy-Zeilenumbruch-Helfer (falls genutzt) */
-  @media (max-width:600px){ .mobile-break{ display:block; margin-top:.25rem; } }
+    .nav-drawer li {
+      list-style: none;
+    }
 
-  /* TUHH-Farbe + Ball-Icon im Text */
-  .tuhh{ color:#00778A; font-weight:bold; }
-  .logo-ball{
-    display:inline-block; height:1em; width:auto;
-    margin:0 .4em 0 0; vertical-align:-0.15em;
-  }
+    .nav-drawer[hidden] {
+      display: none !important;
+    }
 
-  /* Footer mit großem AStA-Logo */
-  .footer{ margin-top:2rem; color:var(--muted-color); }
-  .footer a{ color:inherit; text-decoration:none; }
-  .footer a:hover{ text-decoration:underline; }
-  .asta-logo{ height:80px; width:auto; margin-top:.5rem; }
+    /* Responsive: unter 700px Desktop-Leiste ausblenden */
+    @media (max-width:700px) {
+      .nav-links-desktop {
+        display: none;
+      }
+    }
+
+    /* Über 700px: Burger & Drawer ausblenden */
+    @media (min-width:701px) {
+
+      .menu-toggle,
+      #mobileMenu {
+        display: none !important;
+      }
+    }
+
+    /* Header-Logo oben (nicht das kleine Ball-Icon im H1!) */
+    header>img {
+      max-width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    header h1,
+    header p {
+      text-align: center;
+    }
+
+    /* Kleinzeug */
+    .center {
+      text-align: center
+    }
+
+    .qr {
+      max-width: 220px;
+      height: auto;
+      border-radius: 12px
+    }
+
+    figure {
+      margin: 0
+    }
+
+    footer {
+      margin-top: 2rem
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    .badge {
+      display: inline-block;
+      padding: .15rem .5rem;
+      border-radius: .5rem;
+      font-size: .8rem
+    }
+
+    .badge.ok {
+      background: var(--primary-focus);
+      color: var(--primary-inverse)
+    }
+
+    /* Handy-Zeilenumbruch-Helfer (falls genutzt) */
+    @media (max-width:600px) {
+      .mobile-break {
+        display: block;
+        margin-top: .25rem;
+      }
+    }
+
+    /* TUHH-Farbe + Ball-Icon im Text */
+    .tuhh {
+      color: #00778A;
+      font-weight: bold;
+    }
+
+    .logo-ball {
+      display: inline-block;
+      height: 1em;
+      width: auto;
+      margin: 0 .4em 0 0;
+      vertical-align: -0.15em;
+    }
+
+    /* Footer mit großem AStA-Logo */
+    .footer {
+      margin-top: 2rem;
+      color: var(--muted-color);
+    }
+
+    .footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .asta-logo {
+      height: 80px;
+      width: auto;
+      margin-top: .5rem;
+    }
+
     /* Burger-Farbe je nach Theme */
-  :root[data-theme="light"] .menu-toggle{
-    color: #000;                 /* schwarz im hellen Modus */
-    border-color: rgba(0,0,0,.35);
-  }
+    :root[data-theme="light"] .menu-toggle {
+      color: #000;
+      /* schwarz im hellen Modus */
+      border-color: rgba(0, 0, 0, .35);
+    }
 
-  :root[data-theme="dark"] .menu-toggle{
-    color: #fff;                 /* weiß im dunklen Modus */
-    border-color: rgba(255,255,255,.35);
-  }
+    :root[data-theme="dark"] .menu-toggle {
+      color: #fff;
+      /* weiß im dunklen Modus */
+      border-color: rgba(255, 255, 255, .35);
+    }
 
-  /* optional für Hover/Focus, damit die Farbe nicht "verschwindet" */
-  :root[data-theme="light"] .menu-toggle:hover,
-  :root[data-theme="light"] .menu-toggle:focus {
-    color: #000;
-    border-color: rgba(0,0,0,.55);
-  }
-  :root[data-theme="dark"] .menu-toggle:hover,
-  :root[data-theme="dark"] .menu-toggle:focus {
-    color: #fff;
-    border-color: rgba(255,255,255,.55);
-  }
-  /* Fixe Breiten, damit nichts springt */
-  #themeToggle{
-    inline-size: 7.5rem;         /* genug Platz für "🌙 Dunkel" */
-    text-align: center;          /* Text mittig */
-    white-space: nowrap;         /* kein Umbruch */
-  }
+    /* optional für Hover/Focus, damit die Farbe nicht "verschwindet" */
+    :root[data-theme="light"] .menu-toggle:hover,
+    :root[data-theme="light"] .menu-toggle:focus {
+      color: #000;
+      border-color: rgba(0, 0, 0, .55);
+    }
 
-  .menu-toggle{
-    inline-size: 2.25rem;        /* Platz für ☰ / ✕ */
-    text-align: center;
-  }
+    :root[data-theme="dark"] .menu-toggle:hover,
+    :root[data-theme="dark"] .menu-toggle:focus {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .55);
+    }
 
-  /* Sicherheit: Rechtsbündig halten */
-  .nav-inline{
-    margin-left: auto;           /* Gruppe rechts */
-    justify-content: flex-end;   /* innerhalb der Gruppe rechtsbündig */
-    gap: .5rem;
-  }
+    /* Fixe Breiten, damit nichts springt */
+    #themeToggle {
+      inline-size: 7.5rem;
+      /* genug Platz für "🌙 Dunkel" */
+      text-align: center;
+      /* Text mittig */
+      white-space: nowrap;
+      /* kein Umbruch */
+    }
 
-:root[data-theme="light"] #mobileMenu a,
-:root[data-theme="light"] .nav-links-desktop a {
-  color: #000 !important;   /* Schwarz */
-  font-weight: bold;
-}
+    .menu-toggle {
+      inline-size: 2.25rem;
+      /* Platz für ☰ / ✕ */
+      text-align: center;
+    }
 
-:root[data-theme="dark"] #mobileMenu a,
-:root[data-theme="dark"] .nav-links-desktop a {
-  color: #fff !important;   /* Weiß */
-  font-weight: bold;
-}
+    /* Sicherheit: Rechtsbündig halten */
+    .nav-inline {
+      margin-left: auto;
+      /* Gruppe rechts */
+      justify-content: flex-end;
+      /* innerhalb der Gruppe rechtsbündig */
+      gap: .5rem;
+    }
 
-</style>
+    :root[data-theme="light"] #mobileMenu a,
+    :root[data-theme="light"] .nav-links-desktop a {
+      color: #000 !important;
+      /* Schwarz */
+      font-weight: bold;
+    }
+
+    :root[data-theme="dark"] #mobileMenu a,
+    :root[data-theme="dark"] .nav-links-desktop a {
+      color: #fff !important;
+      /* Weiß */
+      font-weight: bold;
+    }
+  </style>
 
 
 </head>
@@ -440,29 +567,29 @@
 </script>
 
 <script>
-  (function(){
+  (function () {
     const btn = document.querySelector('.menu-toggle');
     const drawer = document.getElementById('mobileMenu');
-    if(!btn || !drawer) return;
+    if (!btn || !drawer) return;
 
-    btn.addEventListener('click', ()=>{
+    btn.addEventListener('click', () => {
       const open = drawer.hasAttribute('hidden') ? false : true;
-      if(open){
-        drawer.setAttribute('hidden','');
-        btn.setAttribute('aria-expanded','false');
+      if (open) {
+        drawer.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
         btn.textContent = '☰';
-      }else{
+      } else {
         drawer.removeAttribute('hidden');
-        btn.setAttribute('aria-expanded','true');
+        btn.setAttribute('aria-expanded', 'true');
         btn.textContent = '✕';
       }
     });
 
     // Schließt das Menü beim Klick auf einen Link (komfortabel)
-    drawer.addEventListener('click', (e)=>{
-      if(e.target.matches('a')){
-        drawer.setAttribute('hidden','');
-        btn.setAttribute('aria-expanded','false');
+    drawer.addEventListener('click', (e) => {
+      if (e.target.matches('a')) {
+        drawer.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
         btn.textContent = '☰';
       }
     });
