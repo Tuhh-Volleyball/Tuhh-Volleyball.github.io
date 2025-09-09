@@ -10,214 +10,126 @@
   <link rel="apple-touch-icon" href="assets/ball.png">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <style>
-    /* Smooth Scrolling für Sprunglinks */
-    html {
-      scroll-behavior: smooth;
-    }
+  /* Smooth Scrolling & Anker-Abstand */
+  html { scroll-behavior: smooth; }
+  article[id] { scroll-margin-top: 84px; }
 
-    /* Damit Anker (#termine etc.) nicht unter der sticky Nav verschwinden */
-    article[id] {
-      scroll-margin-top: 84px;
-    }
+  /* Sticky Top-Nav */
+  .topnav{
+    position: sticky; top: 0; z-index: 1000;
+    backdrop-filter: saturate(1.2) blur(8px);
+    background: color-mix(in oklab, var(--background-color), transparent 15%);
+    border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
+    border-radius: 0 0 12px 12px;
+    margin-bottom: .5rem;
+  }
 
-    /* Sticky Top-Nav (ersetzt deine alte .topbar) */
-    .topnav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: saturate(1.2) blur(8px);
-      background: color-mix(in oklab, var(--background-color), transparent 15%);
-      border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
-      border-radius: 0 0 12px 12px;
-      margin-bottom: .5rem;
-    }
+  /* Brand-Zeile (links Titel, rechts Theme + Burger) */
+  .brand-row{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; }
+  .brand{ display:flex; align-items:center; gap:.4em; }
 
-    @media (max-width: 800px) {
-      .topnav ul:last-child {
-        gap: .25rem;
-      }
+  /* Rechts-inline: Theme + Burger */
+  .nav-inline{ display:flex; align-items:center; gap:.5rem; margin:0; margin-left: auto; }
+  .nav-inline li{ list-style:none; }
 
-      .topnav a {
-        white-space: nowrap;
-      }
-    }
+  /* Desktop-Linkleiste (unter der Brand-Zeile) */
+  .nav-links-desktop{ display:flex; gap:.5rem; margin-top:.5rem; }
+  .nav-links-desktop li{ list-style:none; }
 
-    .topnav a.active {
-      text-decoration: underline;
-      text-underline-offset: .3em;
-    }
+  /* Burger-Button */
+  .menu-toggle{
+    background:none; border:1px solid var(--muted-border-color); border-radius:10px;
+    padding:.35rem .6rem; font-size:1.1rem; line-height:1; cursor:pointer;
+  }
 
-    /* Deine bisherigen Helfer (leicht bereinigt: .topbar kann weg) */
-    header>img {
-      max-width: 180px;
-      height: auto;
-      display: block;
-      margin: 0 auto 1rem;
-    }
+  /* Aufklappmenü (Mobile Drawer) */
+  .nav-drawer{
+    display:flex; flex-direction:column; gap:.25rem;
+    padding:.5rem 0 0; margin:0;
+    border-top:1px solid color-mix(in oklab, var(--muted-border-color), transparent 30%);
+  }
+  .nav-drawer li{ list-style:none; }
+  .nav-drawer[hidden]{ display:none !important; }
 
-    header h1,
-    header p {
-      text-align: center
-    }
+  /* Responsive: unter 700px Desktop-Leiste ausblenden */
+  @media (max-width:700px){ .nav-links-desktop{ display:none; } }
 
-    .center {
-      text-align: center
-    }
+  /* Über 700px: Burger & Drawer ausblenden */
+  @media (min-width:701px){
+    .menu-toggle, #mobileMenu{ display:none !important; }
+  }
 
-    .qr {
-      max-width: 220px;
-      height: auto;
-      border-radius: 12px
-    }
+  /* Header-Logo oben (nicht das kleine Ball-Icon im H1!) */
+  header > img{
+    max-width:180px; height:auto; display:block; margin:0 auto 1rem;
+  }
+  header h1, header p{ text-align:center; }
 
-    figure {
-      margin: 0
-    }
+  /* Kleinzeug */
+  .center{text-align:center}
+  .qr{max-width:220px;height:auto;border-radius:12px}
+  figure{margin:0}
+  footer{margin-top:2rem}
+  .hidden{display:none !important}
+  .badge{display:inline-block;padding:.15rem .5rem;border-radius:.5rem;font-size:.8rem}
+  .badge.ok{background:var(--primary-focus);color:var(--primary-inverse)}
 
-    footer {
-      margin-top: 2rem
-    }
+  /* Handy-Zeilenumbruch-Helfer (falls genutzt) */
+  @media (max-width:600px){ .mobile-break{ display:block; margin-top:.25rem; } }
 
-    .hidden {
-      display: none !important
-    }
+  /* TUHH-Farbe + Ball-Icon im Text */
+  .tuhh{ color:#00778A; font-weight:bold; }
+  .logo-ball{
+    display:inline-block; height:1em; width:auto;
+    margin:0 .4em 0 0; vertical-align:-0.15em;
+  }
 
-    .badge {
-      display: inline-block;
-      padding: .15rem .5rem;
-      border-radius: .5rem;
-      font-size: .8rem
-    }
+  /* Footer mit großem AStA-Logo */
+  .footer{ margin-top:2rem; color:var(--muted-color); }
+  .footer a{ color:inherit; text-decoration:none; }
+  .footer a:hover{ text-decoration:underline; }
+  .asta-logo{ height:80px; width:auto; margin-top:.5rem; }
+</style>
 
-    .badge.ok {
-      background: var(--primary-focus);
-      color: var(--primary-inverse)
-    }
-
-    /* Nur-Handy-Umbruch vor dem Kalender-Link (falls du statt <br> die schicke Variante nutzt) */
-    @media (max-width: 600px) {
-      .mobile-break {
-        display: block;
-        margin-top: .25rem;
-      }
-    }
-
-    .tuhh {
-      color: #00778A;
-      /* TUHH-Corporate-Farbe (Petrolgrün) */
-      font-weight: bold;
-    }
-
-    .logo-ball {
-      display: inline-block;
-      /* nicht blockig → keine neue Zeile */
-      height: 1em;
-      /* so hoch wie die Schrift */
-      width: auto;
-      margin: 0 0 0 0;
-      /* KEIN bottom-Margin mehr */
-      vertical-align: -0.15em;
-      /* optisch mittig zur Grundlinie */
-    }
-
-    .footer {
-      margin-top: 2rem;
-      color: var(--muted-color);
-    }
-
-    .footer a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    .asta-logo {
-      height: 80px;
-      /* schön groß */
-      width: auto;
-      margin-top: .5rem;
-    }
-
-    /* Mobile-Navigation */
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* Standard: Links nebeneinander */
-    .nav-links {
-      display: flex;
-      gap: .5rem;
-    }
-
-    /* Handy-Ansicht */
-    @media (max-width: 700px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        background: var(--background-color);
-        padding: 1rem;
-        border-radius: 0 0 12px 12px;
-        margin-top: .5rem;
-      }
-
-      .nav-links.show {
-        display: flex;
-      }
-    }
-
-    /* Standard: alle Links sichtbar */
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
-
-    /* Auf Handy nur die "always"-Links zeigen */
-    @media (max-width: 700px) {
-      .nav-links li {
-        display: none;
-      }
-
-      .nav-links li.always {
-        display: inline-block;
-      }
-    }
-  </style>
 
 </head>
 
 <nav class="container topnav" aria-label="Hauptnavigation">
-  <ul>
-    <li><strong>
+  <div class="brand-row">
+    <strong class="brand">
       <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
       TUHH Volleyball
-    </strong></li>
+    </strong>
+
+    <!-- Rechts: nur Theme + Burger -->
+    <ul class="nav-inline">
+      <li>
+        <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗</button>
+      </li>
+      <li>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">☰</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Aufklappmenü (Handy): nur Startseite & Impressum -->
+  <ul id="mobileMenu" class="nav-drawer" hidden>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
   </ul>
 
-  <ul class="nav-links">
-    <li class="always"><a href="index.html">Startseite</a></li>
+  <!-- Desktop-Links (wie gehabt) -->
+  <ul class="nav-links-desktop">
     <li><a href="#training">Training</a></li>
     <li><a href="#termine">Termine</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#vision">Vision</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
-    <li class="always"><a href="impressum.html">Impressum</a></li>
-    <li class="always">
-      <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗</button>
-    </li>
+    <li><a href="impressum.html">Impressum</a></li>
   </ul>
 </nav>
+
+
 
 
 
@@ -475,9 +387,33 @@
 </script>
 
 <script>
-  document.querySelector('.menu-toggle').addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.toggle('show');
-  });
+  (function(){
+    const btn = document.querySelector('.menu-toggle');
+    const drawer = document.getElementById('mobileMenu');
+    if(!btn || !drawer) return;
+
+    btn.addEventListener('click', ()=>{
+      const open = drawer.hasAttribute('hidden') ? false : true;
+      if(open){
+        drawer.setAttribute('hidden','');
+        btn.setAttribute('aria-expanded','false');
+        btn.textContent = '☰';
+      }else{
+        drawer.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded','true');
+        btn.textContent = '✕';
+      }
+    });
+
+    // Schließt das Menü beim Klick auf einen Link (komfortabel)
+    drawer.addEventListener('click', (e)=>{
+      if(e.target.matches('a')){
+        drawer.setAttribute('hidden','');
+        btn.setAttribute('aria-expanded','false');
+        btn.textContent = '☰';
+      }
+    });
+  })();
 </script>
 
 </body>
