@@ -13,7 +13,10 @@ article[id] { scroll-margin-top: 84px; }
 }
 
 /* Brand-Zeile */
-.brand-row{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; }
+.brand-row{
+  display:flex; align-items:center; justify-content:space-between; gap:.75rem;
+  position: relative; /* Bezugspunkt fürs Dropdown */
+}
 .brand{ display:flex; align-items:center; gap:.4em; }
 
 /* Rechts-inline: Theme + Burger */
@@ -51,20 +54,59 @@ article[id] { scroll-margin-top: 84px; }
   white-space: nowrap; text-align:center;
 }
 
-
-/* Aufklappmenü (Mobile Drawer) */
+/* ===== Mobiles Dropdown-Panel rechts unter dem ☰ ===== */
 .nav-drawer{
+  position: absolute;
+  inset-block-start: calc(100% + 6px); /* unter der Brand-Zeile */
+  inset-inline-end: .5rem;             /* rechts bündig */
+  width: min(240px, 92vw);
+
   display:flex; flex-direction:column; gap:.25rem;
-  padding:.5rem 0 0; margin:0;
-  border-top:1px solid color-mix(in oklab, var(--muted-border-color), transparent 30%);
+  padding:.5rem; margin:0;
+
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  z-index: 1100; /* über Backdrop & Inhalt */
 }
+:root[data-theme="light"] .nav-drawer{
+  background: var(--card-background-color, #fff);
+  border: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 20%);
+}
+:root[data-theme="dark"] .nav-drawer{
+  background: var(--card-background-color, #111315);
+  border: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 35%);
+}
+
 .nav-drawer li{ list-style:none; }
 .nav-drawer[hidden]{ display:none !important; }
 
+.nav-drawer a{
+  display:block;
+  padding:.4rem .6rem;
+  border-radius:8px;
+}
+.nav-drawer a:hover{
+  background: color-mix(in oklab, var(--muted-border-color), transparent 80%);
+}
+
+/* ===== Backdrop hinter dem Menü ===== */
+#menuBackdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(1px);
+  z-index: 1050;              /* unter dem Panel, über dem Inhalt */
+}
+#menuBackdrop[hidden]{ display:none !important; }
+
 /* Responsive: unter 700px Desktop-Leiste ausblenden */
-@media (max-width:700px){ .nav-links-desktop{ display:none; } }
+@media (max-width:700px){
+  .nav-links-desktop{ display:none; }
+}
 /* Über 700px: Burger & Drawer ausblenden */
-@media (min-width:701px){ .menu-toggle, #mobileMenu{ display:none !important; } }
+@media (min-width:701px){
+  .menu-toggle, #mobileMenu{ display:none !important; }
+}
 
 /* Header-Logo oben (falls verwendet) */
 header > img{ max-width:180px; height:auto; display:block; margin:0 auto 1rem; }
@@ -77,8 +119,11 @@ figure{ margin:0 }
 footer{ margin-top:2rem }
 .hidden{ display:none !important }
 .badge{ display:inline-block; padding:.15rem .5rem; border-radius:.5rem; font-size:.8rem }
-.badge.ok{ background:var(--primary-focus); color:var(--primary-inverse) }
-@media (max-width:600px){ .mobile-break{ display:block; margin-top:.25rem; } }
+.badge.ok{ background: var(--primary-focus); color: var(--primary-inverse); }
+
+@media (max-width:600px){
+  .mobile-break{ display:block; margin-top:.25rem; }
+}
 
 /* TUHH-Farbe + kleines Ball-Icon inline */
 .tuhh{ color:#00778A; font-weight:bold; }
@@ -90,12 +135,11 @@ footer{ margin-top:2rem }
 .footer a:hover{ text-decoration:underline; }
 .asta-logo{ height:80px; width:auto; margin-top:.5rem; }
 
-/* ===== Navigation Oben ===== */
+/* ===== Navigation Oben: Linkfarben ===== */
 :root[data-theme="light"] #mobileMenu a,
 :root[data-theme="light"] .nav-links-desktop a{ color:#000 !important; font-weight:bold; }
 :root[data-theme="dark"]  #mobileMenu a,
 :root[data-theme="dark"]  .nav-links-desktop a{ color:#fff !important; font-weight:bold; }
-
 
 /* Aktive Seite visuell markieren */
 [aria-current="page"]{ text-decoration: underline; text-underline-offset: .2em; }
