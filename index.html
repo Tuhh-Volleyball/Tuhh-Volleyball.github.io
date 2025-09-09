@@ -47,12 +47,6 @@
   </ul>
 </nav>
 
-
-
-
-
-
-
 <header class="container">
   <h1>
     <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
@@ -170,34 +164,7 @@
 <!-- Theme-Script: merkt sich die Auswahl in localStorage -->
 <script src="assets/theme-toggle.js" defer></script>
 <!-- Kalender-Ansicht Umschalter -->
-<script>
-  (function () {
-    const frame = document.getElementById('gcalFrame');
-    const btn = document.getElementById('calendarToggle');
-    if (!frame || !btn) return;
-
-    function getMode() {
-      const url = new URL(frame.src);
-      return url.searchParams.get('mode') || 'AGENDA';
-    }
-    function setMode(mode) {
-      const url = new URL(frame.src);
-      url.searchParams.set('mode', mode);
-      frame.src = url.toString();
-      btn.textContent = (mode === 'MONTH') ? 'Agenda' : 'Monat';
-    }
-
-    // Klick = Toggle zwischen MONTH und AGENDA
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const cur = getMode();
-      setMode(cur === 'MONTH' ? 'AGENDA' : 'MONTH');
-    });
-
-    // Initial Beschriftung richtig setzen
-    setMode(getMode());
-  })();
-</script>
+<script src="assets/calender.js" defer></script>
 
 
 
