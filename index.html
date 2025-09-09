@@ -89,6 +89,57 @@
   .footer a{ color:inherit; text-decoration:none; }
   .footer a:hover{ text-decoration:underline; }
   .asta-logo{ height:80px; width:auto; margin-top:.5rem; }
+    /* Burger-Farbe je nach Theme */
+  :root[data-theme="light"] .menu-toggle{
+    color: #000;                 /* schwarz im hellen Modus */
+    border-color: rgba(0,0,0,.35);
+  }
+
+  :root[data-theme="dark"] .menu-toggle{
+    color: #fff;                 /* weiß im dunklen Modus */
+    border-color: rgba(255,255,255,.35);
+  }
+
+  /* optional für Hover/Focus, damit die Farbe nicht "verschwindet" */
+  :root[data-theme="light"] .menu-toggle:hover,
+  :root[data-theme="light"] .menu-toggle:focus {
+    color: #000;
+    border-color: rgba(0,0,0,.55);
+  }
+  :root[data-theme="dark"] .menu-toggle:hover,
+  :root[data-theme="dark"] .menu-toggle:focus {
+    color: #fff;
+    border-color: rgba(255,255,255,.55);
+  }
+  /* Fixe Breiten, damit nichts springt */
+  #themeToggle{
+    inline-size: 7.5rem;         /* genug Platz für "🌙 Dunkel" */
+    text-align: center;          /* Text mittig */
+    white-space: nowrap;         /* kein Umbruch */
+  }
+
+  .menu-toggle{
+    inline-size: 2.25rem;        /* Platz für ☰ / ✕ */
+    text-align: center;
+  }
+
+  /* Sicherheit: Rechtsbündig halten */
+  .nav-inline{
+    margin-left: auto;           /* Gruppe rechts */
+    justify-content: flex-end;   /* innerhalb der Gruppe rechtsbündig */
+    gap: .5rem;
+  }
+
+:root[data-theme="light"] #mobileMenu a,
+:root[data-theme="light"] .nav-links-desktop a {
+  color: #000 !important;   /* Schwarz */
+}
+
+:root[data-theme="dark"] #mobileMenu a,
+:root[data-theme="dark"] .nav-links-desktop a {
+  color: #fff !important;   /* Weiß */
+}
+
 </style>
 
 
