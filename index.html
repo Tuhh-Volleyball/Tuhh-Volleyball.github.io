@@ -175,6 +175,24 @@
         display: flex;
       }
     }
+
+    /* Standard: alle Links sichtbar */
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    /* Auf Handy nur die "always"-Links zeigen */
+    @media (max-width: 700px) {
+      .nav-links li {
+        display: none;
+      }
+
+      .nav-links li.always {
+        display: inline-block;
+      }
+    }
   </style>
 
 </head>
@@ -186,19 +204,21 @@
         TUHH Volleyball
       </strong></li>
   </ul>
-  <button class="menu-toggle" aria-label="Navigation öffnen">☰</button>
+
   <ul class="nav-links">
+    <li class="always"><a href="index.html">Startseite</a></li>
     <li><a href="#training">Training</a></li>
     <li><a href="#termine">Termine</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#vision">Vision</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
-    <li><a href="impressum.html">Impressum</a></li>
+    <li class="always"><a href="impressum.html">Impressum</a></li>
     <li>
       <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗</button>
     </li>
   </ul>
 </nav>
+
 
 
 
