@@ -10,6 +10,7 @@ article[id] { scroll-margin-top: 84px; }
   border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
   border-radius: 0 0 12px 12px;
   margin-bottom: .5rem;
+  display: block;
 }
 
 /* Wenn das Menü offen ist: Topbar NICHT abdunkeln (Glass aus) */
