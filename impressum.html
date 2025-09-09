@@ -1,27 +1,76 @@
 <!doctype html>
 <html lang="de" data-theme="light">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Impressum – Volleyball AG TUHH</title>
+  <title>Impressum - Volleyball AG TUHH</title>
   <meta name="description" content="Impressum der Volleyball AG an der TU Hamburg">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <style>
-    header img{max-width:180px;height:auto;display:block;margin:0 auto 1rem;}
-    header h1, header p{text-align:center}
-    .center{text-align:center}
-    footer{margin-top:2rem}
+    header img {
+      max-width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    header h1,
+    header p {
+      text-align: center
+    }
+
+    .center {
+      text-align: center
+    }
+
+    footer {
+      margin-top: 2rem
+    }
   </style>
+  <link rel="stylesheet" href="assets/style.css">
+
 </head>
+
 <body>
-  <!-- Theme-Umschalter oben rechts -->
-  <div class="topbar">
-    <a href="index.html" class="secondary outline">⬅ Zurück</a>
-  </div>
+  <nav class="container topnav" aria-label="Hauptnavigation">
+    <div class="brand-row">
+      <strong class="brand">
+        <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
+        TUHH Volleyball
+      </strong>
+
+      <!-- Rechts: nur Theme + Burger -->
+      <ul class="nav-inline">
+        <li>
+          <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗</button>
+        </li>
+        <li>
+          <button class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu"
+            aria-label="Menü öffnen">☰</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Mobile Menü -->
+    <ul id="mobileMenu" class="nav-drawer" hidden>
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="impressum.html" aria-current="page">Impressum</a></li>
+    </ul>
+
+    <!-- Desktop Menü -->
+    <ul class="nav-links-desktop">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="impressum.html" aria-current="page">Impressum</a></li>
+    </ul>
+
+  </nav>
 
   <header class="container">
-    <img src="assets/logo.png" alt="TUHH Volleyball Logo">
-    <h1>🏐 TUHH Volleyball</h1>
+    <h1>
+    <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
+    <span class="tuhh">TUHH</span> Volleyball
+  </h1>
     <p><strong>Impressum</strong></p>
   </header>
 
@@ -50,26 +99,56 @@
     <article>
       <h2>Haftung</h2>
       <p>
-        Der Autor übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen den Autor, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen, sofern seitens des Autors kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt. Alle Angebote sind freibleibend und unverbindlich.<br>
-        Bei direkten oder indirekten Verweisen auf fremde Internetseiten ("Links"), die außerhalb des Verantwortungsbereiches des Autors liegen, würde eine Haftungsverpflichtung ausschließlich in dem Fall in Kraft treten, in dem der Autor von den Inhalten Kenntnis hat und es ihm technisch möglich und zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu verhindern.<br>
-        Der Autor erklärt hiermit ausdrücklich, dass für ihn zum Zeitpunkt der Linksetzung keine illegalen Inhalte auf den zu verlinkenden Seiten erkennbar waren. Auf die aktuelle und zukünftige Gestaltung, die Inhalte oder die Urheberschaft der gelinkten/verknüpften Seiten hat der Autor keinerlei Einfluss. Deshalb distanziert er sich hiermit ausdrücklich von allen Inhalten aller gelinkten /verknüpften Seiten, insbesondere solche die nach der Linksetzung verändert wurden.<br>
-        Diese Feststellung gilt für alle innerhalb des eigenen Internetangebotes gesetzten Links und Verweise sowie für Fremdeinträge in vom Autor eingerichteten Diskussionsforen und Mailinglisten. Für illegale, fehlerhafte oder unvollständige Inhalte und insbesondere für Schäden, die aus der Nutzung oder Nichtnutzung solcherart dargebotener Informationen entstehen, haftet allein der Anbieter der Seite, auf welche verwiesen wurde, nicht derjenige, der über Links auf die jeweilige Veröffentlichung lediglich verweist. Sollte Ihnen der Inhalt einer Seite bedenklich erscheinen, bittet der Autor um eine kurze Mitteilung.<br>
-        Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung ist nicht der Schluß zu ziehen, dass Markenzeichen nicht durch Rechte Dritter geschützt sind! Das Copyright für veröffentlichte, vom Autor selbst erstellte Objekte bleibt allein beim Autor der Seiten. Eine Vervielfältigung oder Verwendung solcher Grafiken und Texte in anderen elektronischen oder gedruckten Publikationen ist ohne ausdrückliche Zustimmung des Autors nicht gestattet.<br>
-        Sofern zur Eingabe von persönlichen Daten aufgefordert wird, werden diese nur durch freiwillige Einwilligung des Nutzers öffentlich angezeigt. Die persönlichen Daten werden nur für die Durchführung der Angebote verwendet, für die sie erhoben wurden und nicht an Dritte weitergegeben. Diese Seite erhebt außerdem statistische Daten über die Benutzung der Webseite, durch die aber kein Rückschluss auf den einzelnen Benutzer möglich ist und ausschließlich für die technische Verbesserung dieser Internetseite genutzt werden.<br>
-        Dieser Haftungsausschluss ist als Teil des Internetangebotes zu betrachten, von dem aus auf diese Seite verwiesen wurde. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokumentes in ihrem Inhalt und ihrer Gültigkeit davon unberührt.
+        Der Autor übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der
+        bereitgestellten Informationen. Haftungsansprüche gegen den Autor, welche sich auf Schäden materieller oder
+        ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die
+        Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen,
+        sofern seitens des Autors kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt. Alle
+        Angebote sind freibleibend und unverbindlich.<br>
+        Bei direkten oder indirekten Verweisen auf fremde Internetseiten ("Links"), die außerhalb des
+        Verantwortungsbereiches des Autors liegen, würde eine Haftungsverpflichtung ausschließlich in dem Fall in Kraft
+        treten, in dem der Autor von den Inhalten Kenntnis hat und es ihm technisch möglich und zumutbar wäre, die
+        Nutzung im Falle rechtswidriger Inhalte zu verhindern.<br>
+        Der Autor erklärt hiermit ausdrücklich, dass für ihn zum Zeitpunkt der Linksetzung keine illegalen Inhalte auf
+        den zu verlinkenden Seiten erkennbar waren. Auf die aktuelle und zukünftige Gestaltung, die Inhalte oder die
+        Urheberschaft der gelinkten/verknüpften Seiten hat der Autor keinerlei Einfluss. Deshalb distanziert er sich
+        hiermit ausdrücklich von allen Inhalten aller gelinkten /verknüpften Seiten, insbesondere solche die nach der
+        Linksetzung verändert wurden.<br>
+        Diese Feststellung gilt für alle innerhalb des eigenen Internetangebotes gesetzten Links und Verweise sowie für
+        Fremdeinträge in vom Autor eingerichteten Diskussionsforen und Mailinglisten. Für illegale, fehlerhafte oder
+        unvollständige Inhalte und insbesondere für Schäden, die aus der Nutzung oder Nichtnutzung solcherart
+        dargebotener Informationen entstehen, haftet allein der Anbieter der Seite, auf welche verwiesen wurde, nicht
+        derjenige, der über Links auf die jeweilige Veröffentlichung lediglich verweist. Sollte Ihnen der Inhalt einer
+        Seite bedenklich erscheinen, bittet der Autor um eine kurze Mitteilung.<br>
+        Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen
+        unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der
+        jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung ist nicht der Schluß zu ziehen, dass
+        Markenzeichen nicht durch Rechte Dritter geschützt sind! Das Copyright für veröffentlichte, vom Autor selbst
+        erstellte Objekte bleibt allein beim Autor der Seiten. Eine Vervielfältigung oder Verwendung solcher Grafiken
+        und Texte in anderen elektronischen oder gedruckten Publikationen ist ohne ausdrückliche Zustimmung des Autors
+        nicht gestattet.<br>
+        Sofern zur Eingabe von persönlichen Daten aufgefordert wird, werden diese nur durch freiwillige Einwilligung des
+        Nutzers öffentlich angezeigt. Die persönlichen Daten werden nur für die Durchführung der Angebote verwendet, für
+        die sie erhoben wurden und nicht an Dritte weitergegeben. Diese Seite erhebt außerdem statistische Daten über
+        die Benutzung der Webseite, durch die aber kein Rückschluss auf den einzelnen Benutzer möglich ist und
+        ausschließlich für die technische Verbesserung dieser Internetseite genutzt werden.<br>
+        Dieser Haftungsausschluss ist als Teil des Internetangebotes zu betrachten, von dem aus auf diese Seite
+        verwiesen wurde. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht
+        mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokumentes in ihrem Inhalt und
+        ihrer Gültigkeit davon unberührt.
       </p>
     </article>
 
     <article>
       <h2>Haftung für Links</h2>
       <p>
-        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen 
-        Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. 
-        Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der 
-        Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf 
-        mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der 
-        Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist 
-        jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden 
+        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen
+        Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.
+        Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der
+        Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf
+        mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der
+        Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist
+        jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden
         von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
       </p>
     </article>
@@ -77,30 +156,42 @@
     <article>
       <h2>Urheberrecht</h2>
       <p>
-        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem 
-        deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der 
-        Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung 
-        des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den 
-        privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht 
-        vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere 
-        werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine 
-        Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. 
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+        deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+        Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung
+        des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den
+        privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht
+        vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere
+        werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine
+        Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis.
         Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
       </p>
     </article>
 
   </main>
 
-  <footer class="center">
-    <small>Volleyball AG TUHH – Impressum</small>
-    <div style="margin:1rem 0">
-      <a href="index.html">🏠 Zurück zur Startseite</a>
-    </div>
-    <div>
+  <footer class="center footer">
+    <p>
+      <small>© 2025 Volleyball AG TUHH</small>
+    </p>
+
+    <p>
+      <a href="impressum.html">Impressum</a>
+    </p>
+
+    <p>
       <a href="https://www.asta.tuhh.de/" target="_blank" rel="noopener">
-        <img src="assets/asta.png" alt="AStA TUHH Logo" style="max-height:50px;width:auto">
+        <img src="assets/asta.png" alt="AStA TUHH Logo" class="asta-logo">
       </a>
-    </div>
+    </p>
+
+    <p>
+      <small>Letztes Update: Sept 2025</small>
+    </p>
   </footer>
+  <script src="assets/theme-toggle.js" defer></script>
+  <script src="assets/menu.js" defer></script>
+
 </body>
+
 </html>
