@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="de" data-theme="light">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,106 +9,165 @@
   <link rel="icon" href="assets/ball.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/ball.png">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
-<style>
-  /* Smooth Scrolling für Sprunglinks */
-  html { scroll-behavior: smooth; }
+  <style>
+    /* Smooth Scrolling für Sprunglinks */
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* Damit Anker (#termine etc.) nicht unter der sticky Nav verschwinden */
-  article[id] { scroll-margin-top: 84px; }
+    /* Damit Anker (#termine etc.) nicht unter der sticky Nav verschwinden */
+    article[id] {
+      scroll-margin-top: 84px;
+    }
 
-  /* Sticky Top-Nav (ersetzt deine alte .topbar) */
-  .topnav{
-    position: sticky; top: 0; z-index: 1000;
-    backdrop-filter: saturate(1.2) blur(8px);
-    background: color-mix(in oklab, var(--background-color), transparent 15%);
-    border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
-    border-radius: 0 0 12px 12px;
-    margin-bottom: .5rem;
-  }
-  @media (max-width: 800px){
-    .topnav ul:last-child { gap: .25rem; }
-    .topnav a { white-space: nowrap; }
-  }
-  .topnav a.active{
-    text-decoration: underline;
-    text-underline-offset: .3em;
-  }
+    /* Sticky Top-Nav (ersetzt deine alte .topbar) */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: saturate(1.2) blur(8px);
+      background: color-mix(in oklab, var(--background-color), transparent 15%);
+      border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
+      border-radius: 0 0 12px 12px;
+      margin-bottom: .5rem;
+    }
 
-  /* Deine bisherigen Helfer (leicht bereinigt: .topbar kann weg) */
-  header > img{max-width:180px;height:auto;display:block;margin:0 auto 1rem;}
-  header h1, header p{text-align:center}
-  .center{text-align:center}
-  .qr{max-width:220px;height:auto;border-radius:12px}
-  figure{margin:0}
-  footer{margin-top:2rem}
-  .hidden{display:none !important}
-  .badge{display:inline-block;padding:.15rem .5rem;border-radius:.5rem;font-size:.8rem}
-  .badge.ok{background:var(--primary-focus);color:var(--primary-inverse)}
+    @media (max-width: 800px) {
+      .topnav ul:last-child {
+        gap: .25rem;
+      }
 
-  /* Nur-Handy-Umbruch vor dem Kalender-Link (falls du statt <br> die schicke Variante nutzt) */
-  @media (max-width: 600px){
-    .mobile-break { display:block; margin-top:.25rem; }
-  }
-  .tuhh {
-  color: #00778A; /* TUHH-Corporate-Farbe (Petrolgrün) */
-  font-weight: bold;
-}
-.logo-ball{
-  display: inline-block;     /* nicht blockig → keine neue Zeile */
-  height: 1em;               /* so hoch wie die Schrift */
-  width: auto;
-  margin: 0 0 0 0;        /* KEIN bottom-Margin mehr */
-  vertical-align: -0.15em;   /* optisch mittig zur Grundlinie */
-}
-.footer {
-  margin-top: 2rem;
-  color: var(--muted-color);
-}
+      .topnav a {
+        white-space: nowrap;
+      }
+    }
 
-.footer a {
-  color: inherit;
-  text-decoration: none;
-}
+    .topnav a.active {
+      text-decoration: underline;
+      text-underline-offset: .3em;
+    }
 
-.footer a:hover {
-  text-decoration: underline;
-}
+    /* Deine bisherigen Helfer (leicht bereinigt: .topbar kann weg) */
+    header>img {
+      max-width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem;
+    }
 
-.asta-logo {
-  height: 80px;   /* schön groß */
-  width: auto;
-  margin-top: .5rem;
-}
+    header h1,
+    header p {
+      text-align: center
+    }
 
+    .center {
+      text-align: center
+    }
 
+    .qr {
+      max-width: 220px;
+      height: auto;
+      border-radius: 12px
+    }
 
-</style>
+    figure {
+      margin: 0
+    }
+
+    footer {
+      margin-top: 2rem
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    .badge {
+      display: inline-block;
+      padding: .15rem .5rem;
+      border-radius: .5rem;
+      font-size: .8rem
+    }
+
+    .badge.ok {
+      background: var(--primary-focus);
+      color: var(--primary-inverse)
+    }
+
+    /* Nur-Handy-Umbruch vor dem Kalender-Link (falls du statt <br> die schicke Variante nutzt) */
+    @media (max-width: 600px) {
+      .mobile-break {
+        display: block;
+        margin-top: .25rem;
+      }
+    }
+
+    .tuhh {
+      color: #00778A;
+      /* TUHH-Corporate-Farbe (Petrolgrün) */
+      font-weight: bold;
+    }
+
+    .logo-ball {
+      display: inline-block;
+      /* nicht blockig → keine neue Zeile */
+      height: 1em;
+      /* so hoch wie die Schrift */
+      width: auto;
+      margin: 0 0 0 0;
+      /* KEIN bottom-Margin mehr */
+      vertical-align: -0.15em;
+      /* optisch mittig zur Grundlinie */
+    }
+
+    .footer {
+      margin-top: 2rem;
+      color: var(--muted-color);
+    }
+
+    .footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .asta-logo {
+      height: 80px;
+      /* schön groß */
+      width: auto;
+      margin-top: .5rem;
+    }
+  </style>
 
 </head>
-<body>
-<!-- Sticky Top-Nav -->
-<nav class="container topnav" aria-label="Hauptnavigation">
-  <ul>
-    <li>
-  <strong>
-    <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
-    TUHH Volleyball
-  </strong>
-</li>
 
-  </ul>
-  <ul>
-    <li><a href="#training">Training</a></li>
-    <li><a href="#termine">Termine</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#vision">Vision</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-    <li><a href="impressum.html">Impressum</a></li>
-    <li>
-      <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗</button>
-    </li>
-  </ul>
-</nav>
+<body>
+  <!-- Sticky Top-Nav -->
+  <nav class="container topnav" aria-label="Hauptnavigation">
+    <ul>
+      <li>
+        <strong>
+          <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
+          TUHH Volleyball
+        </strong>
+      </li>
+
+    </ul>
+    <ul>
+      <li><a href="#training">Training</a></li>
+      <li><a href="#termine">Termine</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="impressum.html">Impressum</a></li>
+      <li>
+        <button id="themeToggle" class="secondary outline" aria-label="Farbschema wechseln">🌗</button>
+      </li>
+    </ul>
+  </nav>
 
 
   <header class="container">
@@ -117,19 +177,22 @@
     </h1>
 
     <p>Willkommen bei der <strong>Volleyball AG</strong>! <br>
-    Wir sind eine junge Gruppe von Studierenden und Freunden, die gemeinsam Volleyball spielen - locker, motiviert und mit viel Spaß.</p>
+      Wir sind eine junge Gruppe von Studierenden und Freunden, die gemeinsam Volleyball spielen - locker, motiviert und
+      mit viel Spaß.</p>
   </header>
 
   <main class="container">
     <article id="training">
       <h2>📅 Training & Infos <small id="inviteBadge" class="badge ok hidden">Einladungen heute aktiv</small></h2>
-        <p>Alle Trainingszeiten und Neuigkeiten teilen wir in unserer WhatsApp-Gruppe.</p>
-      
+      <p>Alle Trainingszeiten und Neuigkeiten teilen wir in unserer WhatsApp-Gruppe.</p>
+
       <!-- ▼ Dieser Bereich wird nur an ausgewählten Tagen gezeigt -->
       <div id="inviteBlock" class="grid hidden">
         <div class="center">
-          <p>👉 <strong>Wichtig:</strong> Der folgende Link führt zunächst in eine <em>Interessierten-Gruppe</em>. Von dort bekommt ihr die Infos und Zugang zur eigentlichen Trainingsgruppe.</p>
-          <p><a role="button" href="https://bit.ly/volleyballtuhh" target="_blank" rel="noopener">Hier der Einladungslink für Interessierte</a></p>
+          <p>👉 <strong>Wichtig:</strong> Der folgende Link führt zunächst in eine <em>Interessierten-Gruppe</em>. Von
+            dort bekommt ihr die Infos und Zugang zur eigentlichen Trainingsgruppe.</p>
+          <p><a role="button" href="https://bit.ly/volleyballtuhh" target="_blank" rel="noopener">Hier der
+              Einladungslink für Interessierte</a></p>
           <p class="secondary">Auf dem Handy einfach tippen.</p>
         </div>
         <div class="center">
@@ -150,7 +213,8 @@
 
     <article id="termine">
       <h2>🗓️ Termine</h2>
-      <p class="secondary">Hier siehst du, wann wir spielen. Du kannst unten zwischen Monatsansicht und kompakter Agenda wechseln.</p>
+      <p class="secondary">Hier siehst du, wann wir spielen. Du kannst unten zwischen Monatsansicht und kompakter Agenda
+        wechseln.</p>
 
       <div class="grid">
         <div>
@@ -160,18 +224,15 @@
 
 
           <div class="calendar-frame" style="position:relative;width:100%;min-height:600px">
-            <iframe
-              id="gcalFrame"
-              title="TUHH Volleyball - Termine"
-              loading="lazy"
+            <iframe id="gcalFrame" title="TUHH Volleyball - Termine" loading="lazy"
               style="border:0;width:100%;height:70vh;min-height:600px;border-radius:12px"
-              src="https://calendar.google.com/calendar/embed?src=fbc172ce78d7237e74a8defdee5ec4ad32ee1c84675a2b9e1adcc31e60351b26@group.calendar.google.com&ctz=Europe%2FBerlin&mode=MONTH&showTitle=0&showPrint=0&showTabs=0&wkst=2&showCalendars=0&showTz=0"
-            ></iframe>
+              src="https://calendar.google.com/calendar/embed?src=fbc172ce78d7237e74a8defdee5ec4ad32ee1c84675a2b9e1adcc31e60351b26@group.calendar.google.com&ctz=Europe%2FBerlin&mode=MONTH&showTitle=0&showPrint=0&showTabs=0&wkst=2&showCalendars=0&showTz=0"></iframe>
           </div>
 
           <p class="secondary center" style="margin-top:.5rem">
             👉 Zum eigenen Kalender hinzufügen: <br>
-            <a href="https://calendar.google.com/calendar/u/0/r?cid=fbc172ce78d7237e74a8defdee5ec4ad32ee1c84675a2b9e1adcc31e60351b26@group.calendar.google.com" target="_blank" rel="noopener">In Google Kalender abonnieren</a>
+            <a href="https://calendar.google.com/calendar/u/0/r?cid=fbc172ce78d7237e74a8defdee5ec4ad32ee1c84675a2b9e1adcc31e60351b26@group.calendar.google.com"
+              target="_blank" rel="noopener">In Google Kalender abonnieren</a>
           </p>
         </div>
       </div>
@@ -185,13 +246,16 @@
 
     <article id="vision">
       <h2>✨ Unsere Vision</h2>
-      <p>Dies ist erst der Anfang - eines Tages soll daraus eine <strong>richtige Vereinswebseite</strong> entstehen. Bis dahin halten wir euch hier und in der WhatsApp-Gruppe auf dem Laufenden.</p>
+      <p>Dies ist erst der Anfang - eines Tages soll daraus eine <strong>richtige Vereinswebseite</strong> entstehen.
+        Bis dahin halten wir euch hier und in der WhatsApp-Gruppe auf dem Laufenden.</p>
     </article>
 
     <article id="kontakt">
       <h2>✉️ Kontakt</h2>
       <ul>
-        <li>E-Mail: <a href="mailto:volleyball@tuhh.de?subject=Deine%20Anfrage%20zur%20Volleyball%20AG&amp;body=Hallo%20liebes%20Orga-Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Volleyball%20AG%20und%20w%C3%BCrde%20gerne%20weitere%20Infos%20zu%20den%20Trainingszeiten%20erhalten.%0A%0AViele%20Gr%C3%BC%C3%9Fe%2C%0A%5BDein%20Name%5D">volleyball@tuhh.de</a></li>
+        <li>E-Mail: <a
+            href="mailto:volleyball@tuhh.de?subject=Deine%20Anfrage%20zur%20Volleyball%20AG&amp;body=Hallo%20liebes%20Orga-Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Volleyball%20AG%20und%20w%C3%BCrde%20gerne%20weitere%20Infos%20zu%20den%20Trainingszeiten%20erhalten.%0A%0AViele%20Gr%C3%BC%C3%9Fe%2C%0A%5BDein%20Name%5D">volleyball@tuhh.de</a>
+        </li>
       </ul>
       <p>Viele Grüße,<br>Eure Orga-Truppe 🙂<br><strong>Alexandra, Clemens, Sascha</strong></p>
     </article>
@@ -222,29 +286,29 @@
 
   <!-- Theme-Script: merkt sich die Auswahl in localStorage -->
   <script>
-    (function(){
+    (function () {
       const root = document.documentElement;
-      const btn  = document.getElementById('themeToggle');
-      const KEY  = 'tuhh-volleyball-theme';
-      const valid = new Set(['light','dark']);
+      const btn = document.getElementById('themeToggle');
+      const KEY = 'tuhh-volleyball-theme';
+      const valid = new Set(['light', 'dark']);
 
-      function label(mode){
+      function label(mode) {
         return mode === 'light' ? '☀️ Hell' : '🌙 Dunkel';
       }
-      function normalize(mode){
+      function normalize(mode) {
         // Falls noch alter Wert 'auto' in localStorage liegt → auf 'light' setzen
         return valid.has(mode) ? mode : 'light';
       }
-      function apply(mode){
+      function apply(mode) {
         mode = normalize(mode);
         root.setAttribute('data-theme', mode);
         btn.textContent = label(mode);
-        try { localStorage.setItem(KEY, mode); } catch {}
+        try { localStorage.setItem(KEY, mode); } catch { }
       }
 
       // Startmodus: gespeicherter Wert oder 'light'
       let start = 'light';
-      try { start = normalize(localStorage.getItem(KEY) || 'light'); } catch {}
+      try { start = normalize(localStorage.getItem(KEY) || 'light'); } catch { }
       apply(start);
 
       // Klick toggelt zwischen light ↔ dark
@@ -255,18 +319,18 @@
       });
     })();
   </script>
-<!-- Kalender-Ansicht Umschalter -->
+  <!-- Kalender-Ansicht Umschalter -->
   <script>
-    (function(){
+    (function () {
       const frame = document.getElementById('gcalFrame');
-      const btn   = document.getElementById('calendarToggle');
-      if(!frame || !btn) return;
+      const btn = document.getElementById('calendarToggle');
+      if (!frame || !btn) return;
 
-      function getMode(){
+      function getMode() {
         const url = new URL(frame.src);
         return url.searchParams.get('mode') || 'AGENDA';
       }
-      function setMode(mode){
+      function setMode(mode) {
         const url = new URL(frame.src);
         url.searchParams.set('mode', mode);
         frame.src = url.toString();
@@ -274,7 +338,7 @@
       }
 
       // Klick = Toggle zwischen MONTH und AGENDA
-      btn.addEventListener('click', (e)=>{
+      btn.addEventListener('click', (e) => {
         e.preventDefault();
         const cur = getMode();
         setMode(cur === 'MONTH' ? 'AGENDA' : 'MONTH');
@@ -287,76 +351,77 @@
 
 
 
-<script>
-  (function(){
-    // ==== KONFIGURATION: Einladungsfenster (Start/Ende im Format YYYY-MM-DD) ====
-    // Trage hier pro Semester EINEN Tag als Start/Ende ein – oder auch mehrere Fenster.
-    const INVITE_WINDOWS = [
-      // Beispiel: AG-Vorstellung am 2025-10-15
-      { start: '2025-09-09', end: '2025-09-10' },
-      // nächstes Semester einfach eine neue Zeile ergänzen
-      // { start: '2026-04-14', end: '2026-04-14' },
-    ];
-    const TIMEZONE = 'Europe/Berlin';
+  <script>
+    (function () {
+      // ==== KONFIGURATION: Einladungsfenster (Start/Ende im Format YYYY-MM-DD) ====
+      // Trage hier pro Semester EINEN Tag als Start/Ende ein – oder auch mehrere Fenster.
+      const INVITE_WINDOWS = [
+        // Beispiel: AG-Vorstellung am 2025-10-15
+        { start: '2025-09-09', end: '2025-09-10' },
+        // nächstes Semester einfach eine neue Zeile ergänzen
+        // { start: '2026-04-14', end: '2026-04-14' },
+      ];
+      const TIMEZONE = 'Europe/Berlin';
 
-    // ==== HILFSFUNKTIONEN ====
-    const $ = sel => document.querySelector(sel);
+      // ==== HILFSFUNKTIONEN ====
+      const $ = sel => document.querySelector(sel);
 
-    function nowInTZ(tz){
-      // "Lokale" Zeit in der gewünschten TZ erzeugen
-      return new Date(new Date().toLocaleString('en-US', { timeZone: tz }));
-    }
-    function startOfDayTZ(isoDate, tz){
-      // 00:00 in TZ
-      const [y,m,d] = isoDate.split('-').map(Number);
-      const s = new Date(Date.UTC(y, m-1, d, 0, 0, 0));
-      // Korrigierte lokale Zeit als Datum-Objekt in TZ
-      const sLocal = new Date(s.toLocaleString('en-US', { timeZone: tz }));
-      return sLocal;
-    }
-    function endOfDayTZ(isoDate, tz){
-      // 23:59:59.999 in TZ
-      const [y,m,d] = isoDate.split('-').map(Number);
-      const e = new Date(Date.UTC(y, m-1, d, 23, 59, 59, 999));
-      const eLocal = new Date(e.toLocaleString('en-US', { timeZone: tz }));
-      return eLocal;
-    }
-    function inAnyWindow(dt, windows, tz){
-      return windows.some(w => dt >= startOfDayTZ(w.start, tz) && dt <= endOfDayTZ(w.end, tz));
-    }
-    function getQueryFlag(name){
-      const p = new URLSearchParams(location.search);
-      if(!p.has(name)) return null;
-      const v = p.get(name);
-      return (v === '' || v === '1' || v.toLowerCase() === 'true') ? true
-           : (v === '0' || v.toLowerCase() === 'false') ? false
-           : true; // wenn nur ?invite ohne Wert
-    }
+      function nowInTZ(tz) {
+        // "Lokale" Zeit in der gewünschten TZ erzeugen
+        return new Date(new Date().toLocaleString('en-US', { timeZone: tz }));
+      }
+      function startOfDayTZ(isoDate, tz) {
+        // 00:00 in TZ
+        const [y, m, d] = isoDate.split('-').map(Number);
+        const s = new Date(Date.UTC(y, m - 1, d, 0, 0, 0));
+        // Korrigierte lokale Zeit als Datum-Objekt in TZ
+        const sLocal = new Date(s.toLocaleString('en-US', { timeZone: tz }));
+        return sLocal;
+      }
+      function endOfDayTZ(isoDate, tz) {
+        // 23:59:59.999 in TZ
+        const [y, m, d] = isoDate.split('-').map(Number);
+        const e = new Date(Date.UTC(y, m - 1, d, 23, 59, 59, 999));
+        const eLocal = new Date(e.toLocaleString('en-US', { timeZone: tz }));
+        return eLocal;
+      }
+      function inAnyWindow(dt, windows, tz) {
+        return windows.some(w => dt >= startOfDayTZ(w.start, tz) && dt <= endOfDayTZ(w.end, tz));
+      }
+      function getQueryFlag(name) {
+        const p = new URLSearchParams(location.search);
+        if (!p.has(name)) return null;
+        const v = p.get(name);
+        return (v === '' || v === '1' || v.toLowerCase() === 'true') ? true
+          : (v === '0' || v.toLowerCase() === 'false') ? false
+            : true; // wenn nur ?invite ohne Wert
+      }
 
-    // ==== LOGIK ====
-    const inviteBlock   = $('#inviteBlock');
-    const inviteFallback= $('#inviteFallback');
-    const inviteBadge   = $('#inviteBadge');
-    if(!inviteBlock || !inviteFallback) return;
+      // ==== LOGIK ====
+      const inviteBlock = $('#inviteBlock');
+      const inviteFallback = $('#inviteFallback');
+      const inviteBadge = $('#inviteBadge');
+      if (!inviteBlock || !inviteFallback) return;
 
-    const override = getQueryFlag('invite'); // ?invite=1 / ?invite=0
-    const todayTZ  = nowInTZ(TIMEZONE);
-    const activeByWindow = inAnyWindow(todayTZ, INVITE_WINDOWS, TIMEZONE);
-    const active = (override === null) ? activeByWindow : override;
+      const override = getQueryFlag('invite'); // ?invite=1 / ?invite=0
+      const todayTZ = nowInTZ(TIMEZONE);
+      const activeByWindow = inAnyWindow(todayTZ, INVITE_WINDOWS, TIMEZONE);
+      const active = (override === null) ? activeByWindow : override;
 
-    // Sichtbarkeit umschalten
-    if(active){
-      inviteBlock.classList.remove('hidden');
-      inviteFallback.classList.add('hidden');
-      if(inviteBadge) inviteBadge.classList.remove('hidden');
-    }else{
-      inviteBlock.classList.add('hidden');
-      inviteFallback.classList.remove('hidden');
-      if(inviteBadge) inviteBadge.classList.add('hidden');
-    }
-  })();
-</script>
+      // Sichtbarkeit umschalten
+      if (active) {
+        inviteBlock.classList.remove('hidden');
+        inviteFallback.classList.add('hidden');
+        if (inviteBadge) inviteBadge.classList.remove('hidden');
+      } else {
+        inviteBlock.classList.add('hidden');
+        inviteFallback.classList.remove('hidden');
+        if (inviteBadge) inviteBadge.classList.add('hidden');
+      }
+    })();
+  </script>
 
 
 </body>
+
 </html>
