@@ -21,17 +21,17 @@ body:has(#menuBackdrop:not([hidden])) .topnav{
 
 /* Brand-Zeile */
 .brand-row{
-  display:flex; align-items:center; justify-content:space-between; gap:.75rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
   position: relative; /* Bezugspunkt fürs Dropdown */
 }
 .brand{ display:flex; align-items:center; gap:.4em; }
 
 /* Rechts-inline: Theme + Burger */
-.nav-inline{ display:flex; align-items:center; gap:.5rem; margin:0; margin-left:auto; justify-content:flex-end; }
+.nav-inline{ display:flex; gap:.5rem; margin-left:auto; }
 .nav-inline li{ list-style:none; }
 
 /* Desktop-Linkleiste */
-.nav-links-desktop{ display:flex; gap:.5rem; margin-top:.5rem; }
+.nav-links-desktop{ display:flex; gap:1rem; margin:0; padding:0; }
 .nav-links-desktop li{ list-style:none; }
 
 /* Burger-Button (fixe Breite, damit nichts springt) */
