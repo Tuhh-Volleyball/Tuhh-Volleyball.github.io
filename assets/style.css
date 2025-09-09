@@ -9,7 +9,7 @@ article[id] { scroll-margin-top: 84px; }
   background: color-mix(in oklab, var(--background-color), transparent 15%);
   border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
   border-radius: 0 0 12px 12px;
-  margin-bottom: .5rem;
+  margin-bottom: .1rem;
   display: block;
 }
 
