@@ -41,7 +41,11 @@ body:has(#menuBackdrop:not([hidden])) .topnav {
   display: flex;
   align-items: center;
   gap: .4em;
+  text-decoration: none; /* Unterstreichung weg */
+  color: inherit;        /* übernimmt normale Textfarbe */
+  font-weight: bold;     /* bleibt fett */
 }
+
 
 /* Rechts-inline: Theme + Burger */
 .nav-inline {
