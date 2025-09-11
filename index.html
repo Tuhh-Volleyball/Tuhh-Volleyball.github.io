@@ -17,7 +17,7 @@
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Volleyball AG - TUHH">
   <meta property="og:description" content="Training, Termine, Mitmachen. Kostenfrei für TUHH-Studierende.">
-  <meta property="og:image" content="https://tuhh-volleyball.github.io/assets/volleyball_hero.jpg">
+  <meta property="og:image" content="https://tuhh-volleyball.github.io/assets/logo.png">
   <meta property="og:url" content="https://tuhh-volleyball.github.io/">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -44,15 +44,15 @@
         TUHH Volleyball
       </strong>
 
-          <!-- Desktop-Links (wie gehabt) -->
-    <ul class="nav-links-desktop">
-      <li><a href="#training">Training</a></li>
-      <li><a href="#termine">Termine</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#vision">Vision</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-      <li><a href="impressum.html">Impressum</a></li>
-    </ul>
+      <!-- Desktop-Links (wie gehabt) -->
+      <ul class="nav-links-desktop">
+        <li><a href="#training">Training</a></li>
+        <li><a href="#termine">Termine</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
 
       <!-- Rechts: nur Theme + Burger -->
       <ul class="nav-inline">
@@ -75,7 +75,7 @@
 
   </nav>
   <div id="menuBackdrop" hidden></div>
-  
+
   <header class="container">
     <h1>
       <img src="assets/ball.png" alt="Volleyball" class="logo-ball">
@@ -144,6 +144,34 @@
       </div>
     </article>
 
+    <article id="rueckmeldung">
+      <h2>📝 AG-Rückmeldungsformular</h2>
+      <p>Bitte fülle das Formular aus, um dich als Mitglied in der Volleyball AG zurückzumelden:</p>
+
+      <div class="form-wrapper">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfBQVEEXTEFtQzCxN7gnASGrhzAUxzHWWoDdCrmyI2X2PVJlw/viewform?embedded=true"
+          frameborder="0" marginheight="0" marginwidth="0">
+          Lade Formular…
+        </iframe>
+      </div>
+    </article>
+    <script>
+      (function () {
+        // Zeitraum festlegen
+        const start = new Date("2026-06-15T00:00:00");
+        const end = new Date("2026-07-13T23:59:59");
+        const now = new Date();
+
+        const article = document.getElementById("rueckmeldung");
+
+        if (now >= start && now <= end) {
+          article.style.display = "block";  // sichtbar im Zeitraum
+        } else {
+          article.style.display = "none";   // sonst ausgeblendet
+        }
+      })();
+    </script>
 
     <article id="team">
       <h2>🙌 Wer wir sind</h2>
