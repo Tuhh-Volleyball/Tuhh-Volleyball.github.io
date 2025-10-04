@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>404 – Seite nicht gefunden</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      text-align: center;
+      padding: 3rem;
+      background: #f5f7fa;
+      color: #333;
+    }
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    p { font-size: 1.1rem; }
+    a {
+      color: #0b7fab;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+  <script>
+    // Ersetzt den Platzhalter in der Mail mit der aktuellen URL
+    function setMailLink() {
+      const currentUrl = window.location.href;
+      const mail = "mailto:deine@mailadresse.de"
+        + "?subject=" + encodeURIComponent("Fehler auf der Volleyball-AG-Seite")
+        + "&body=" + encodeURIComponent("Hallo,\n\nich wollte euch nur mitteilen, dass dieser Link nicht funktioniert:\n" + currentUrl + "\n\nViele Grüße");
+      document.getElementById("mailLink").href = mail;
+    }
+    window.onload = setMailLink;
+  </script>
+</head>
+<body>
+  <h1>404 – Seite nicht gefunden 🏐</h1>
+  <p>Die angeforderte Seite existiert leider nicht (mehr).</p>
+  <p><a href="https://tuhh-volleyball.github.io/">Zurück zur Startseite</a></p>
+  <p>Fehler gefunden? <a id="mailLink" href="#">Melde ihn mir per E-Mail</a></p>
+</body>
+</html>
