@@ -9,9 +9,7 @@ article[id] {
 
 /* Sticky Top-Nav (Glass-Effekt) */
 .topnav {
-  position: sticky;
-  top: 0;
-  z-index: 2000;
+  position: static;
   /* Topbar über Backdrop */
   backdrop-filter: saturate(1.2) blur(8px);
   background: color-mix(in oklab, var(--background-color), transparent 15%);
