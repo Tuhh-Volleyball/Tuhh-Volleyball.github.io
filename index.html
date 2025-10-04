@@ -154,15 +154,15 @@
           </div>
 
           <p class="secondary center" style="margin-top:.5rem">
-            👉 Zum eigenen Kalender hinzufügen: <br>
-            <a href="https://calendar.google.com/calendar/u/0/r?cid=fbc172ce78d7237e74a8defdee5ec4ad32ee1c84675a2b9e1adcc31e60351b26@group.calendar.google.com"
+            <span id="calendarLinksLabel">👉 Zum eigenen Kalender hinzufügen:</span><br>
+            <a id="calendarGoogle"
+              href="https://calendar.google.com/calendar/u/0/r?cid=fbc172ce78d7237e74a8defdee5ec4ad32ee1c84675a2b9e1adcc31e60351b26@group.calendar.google.com"
               target="_blank" rel="noopener">In Google Kalender abonnieren</a> <br>
-            <a
+            <a id="calendarApple"
               href="webcal://calendar.google.com/calendar/ical/fbc172ce78d7237e74a8defdee5ec4ad32ee1c84675a2b9e1adcc31e60351b26%40group.calendar.google.com/public/basic.ics">
               In Apple Kalender abonnieren
-            </a>
-            <br>
-            <a
+            </a><br>
+            <a id="calendarIcs"
               href="https://calendar.google.com/calendar/ical/fbc172ce78d7237e74a8defdee5ec4ad32ee1c84675a2b9e1adcc31e60351b26%40group.calendar.google.com/public/basic.ics">
               .ics herunterladen
             </a>
@@ -395,6 +395,13 @@
           en: 'Here you can see when we play. You can switch between month view and compact agenda below.'
         },
         calendarToggle: { de: 'Monat', en: 'Month' }, // dein JS kann die Beschriftung ohnehin ändern
+        calendarLinksLabel: {
+          de: '👉 Zum eigenen Kalender hinzufügen:',
+          en: '👉 Add to your personal calendar:'
+        },
+        calendarGoogle: { de: 'In Google Kalender abonnieren', en: 'Subscribe in Google Calendar' },
+        calendarApple: { de: 'In Apple Kalender abonnieren', en: 'Subscribe in Apple Calendar' },
+        calendarIcs: { de: '.ics herunterladen', en: 'Download .ics file' },
 
         // Team
         teamTitle: { de: '🙌 Wer wir sind', en: '🙌 Who we are' },
@@ -449,6 +456,11 @@
             el.setAttribute('href', value);
             return;
           }
+          if (el.tagName === 'A') {
+            el.textContent = value;
+            return;
+          }
+
 
           // Alle anderen Standard-Texte
           el.innerHTML = value;
