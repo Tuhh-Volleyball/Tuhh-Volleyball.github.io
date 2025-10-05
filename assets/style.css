@@ -9,14 +9,32 @@ article[id] {
 
 /* Sticky Top-Nav (Glass-Effekt) */
 .topnav {
-  transition: opacity 0.9s ease;
-  /* Topbar über Backdrop */
+  transition: opacity .35s ease, transform .35s ease;
   backdrop-filter: saturate(1.2) blur(8px);
   background: color-mix(in oklab, var(--background-color), transparent 15%);
   border-bottom: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 40%);
   border-radius: 0 0 12px 12px;
   margin-bottom: .1rem;
   display: block;
+
+  z-index: 2000;
+  /* <— HINZUFÜGEN: Topbar über dem Backdrop (1500) */
+}
+
+
+/* versteckt beim Scrollen */
+.topnav.is-hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  /* ok nur wenn Menü zu ist */
+}
+
+/* wenn das Mobile-Menü offen ist, immer sichtbar & klickbar */
+.topnav.menu-open {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
 /* Wenn das Menü offen ist: Topbar NICHT abdunkeln (Glass aus) */
@@ -39,9 +57,12 @@ body:has(#menuBackdrop:not([hidden])) .topnav {
   display: flex;
   align-items: center;
   gap: .4em;
-  text-decoration: none; /* Unterstreichung weg */
-  color: inherit;        /* übernimmt normale Textfarbe */
-  font-weight: bold;     /* bleibt fett */
+  text-decoration: none;
+  /* Unterstreichung weg */
+  color: inherit;
+  /* übernimmt normale Textfarbe */
+  font-weight: bold;
+  /* bleibt fett */
 }
 
 
@@ -117,23 +138,23 @@ body:has(#menuBackdrop:not([hidden])) .topnav {
 
 /* ===== Mobiles Dropdown-Panel rechts unter dem ☰ ===== */
 .nav-drawer {
-  position: absolute;
-  inset-block-start: calc(100% + 6px);
-  /* unter der Brand-Zeile */
-  inset-inline-end: .5rem;
-  /* rechts bündig */
-  width: min(240px, 92vw);
-
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(80vw, 320px);
+  min-height: 6rem; /* oder z. B. 10rem, je nach gewünschter Mindestgröße */
+  max-height: 90vh; /* Sicherheit: falls Inhalt irgendwann doch länger wird */
+  overflow: visible; /* keine Scrollbar */
+  padding: 1rem;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: .25rem;
-  padding: .5rem;
-  margin: 0;
-
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, .35);
+  gap: .5rem;
+  background: var(--card-background-color, #fff);
+  border-left: 1px solid color-mix(in oklab, var(--muted-border-color), transparent 25%);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, .35);
   z-index: 2100;
-  /* Panel über allem */
+  border-radius: 0;
 }
 
 :root[data-theme="light"] .nav-drawer {
@@ -180,7 +201,9 @@ body:has(#menuBackdrop:not([hidden])) .topnav {
 
 /* Seite nicht scrollen, wenn Menü offen */
 body:has(#menuBackdrop:not([hidden])) {
-  overflow: hidden;
+  position: fixed;        /* verhindert Scrollen */
+  overflow-y: scroll; /* Scrollbar bleibt sichtbar */
+  touch-action: none; /* verhindert Touchscroll auf Mobilgeräten */
 }
 
 /* Responsive: unter 700px Desktop-Leiste ausblenden */
