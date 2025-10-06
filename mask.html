@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interaktive Volleyball‑Figur – Drop‑in Widget</title>
+  <style>
+    :root {
+      --accent: #00a86b;
+      /* Spielfeld-Grün */
+      --accent-2: #ffd166;
+      /* Beach-Sand */
+      --fg: #13141a;
+      --bg: rgba(255, 255, 255, .96);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .12), 0 2px 10px rgba(0, 0, 0, .08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fg: #eaeef7;
+        --bg: rgba(19, 20, 26, .92);
+      }
+    }
+
+    /* --- Container: unten rechts schwebend --- */
+    #mascot-container {
+      position: fixed;
+      inset: auto 24px 24px auto;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      width: 180px;
+      height: 180px;
+      pointer-events: none;
+      /* Bubble klickbar lassen */
+    }
+
+    /* Click‑Area für Interaktionen */
+    #mascot-hitbox {
+      position: absolute;
+      inset: 0;
+      pointer-events: auto;
+    }
+
+    /* Karte/Badge hinter der Figur */
+    #mascot-card {
+      position: absolute;
+      bottom: -8px;
+      left: -8px;
+      right: -8px;
+      top: 28px;
+      background: var(--bg);
+      border: 1px solid rgba(0, 0, 0, .06);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .08));
+      transition: transform .2s ease;
+    }
+
+    #mascot {
+      width: 160px;
+      height: 160px;
+      position: relative;
+      animation: bob 3.6s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-6px)
+      }
+    }
+
+    /* Blick/Lidschlag */
+    .pupil {
+      transition: transform .06s linear;
+    }
+
+    .eyelid {
+      animation: blink 5s infinite;
+      transform-origin: center;
+    }
+
+    @keyframes blink {
+
+      0%,
+      97%,
+      100% {
+        transform: scaleY(1)
+      }
+
+      98% {
+        transform: scaleY(.05)
+      }
+
+      99% {
+        transform: scaleY(1)
+      }
+    }
+
+    /* Winken bei Hover/Klick */
+    .arm {
+      transform-origin: 125px 70px;
+    }
+
+    #mascot-container:hover .arm {
+      animation: wave .9s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+
+      50% {
+        transform: rotate(-16deg)
+      }
+    }
+
+    /* Sprechblase */
+    #bubble {
+      position: absolute;
+      right: 180px;
+      bottom: 90px;
+      max-width: 280px;
+      pointer-events: auto;
+      background: var(--bg);
+      color: var(--fg);
+      border: 1px solid rgba(0, 0, 0, .06);
+      padding: 12px 14px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(6px) scale(.98);
+      transition: all .18s ease;
+      font: 500 14px/1.35 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    #bubble.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    #bubble:after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      bottom: 12px;
+      width: 16px;
+      height: 16px;
+      background: var(--bg);
+      border: 1px solid rgba(0, 0, 0, .06);
+      border-left: none;
+      border-bottom: none;
+      transform: rotate(45deg);
+      box-shadow: 8px -8px 0 var(--bg);
+      /* Kanten kaschieren */
+    }
+
+    /* CTA/Buttonzeile (optional) */
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      pointer-events: auto;
+      user-select: none;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: .9
+    }
+
+    .btn:hover {
+      opacity: 1
+    }
+
+    /* Bewegungsreduktion respektieren */
+    @media (prefers-reduced-motion: reduce) {
+      #mascot {
+        animation: none
+      }
+
+      .eyelid {
+        animation: none
+      }
+
+      #mascot-card {
+        transition: none
+      }
+    }
+
+    /* Volleyball-Ball Animation */
+    #ball {
+      transform-origin: 120px 70px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .15));
+    }
+
+    .serve #ball {
+      animation: serve 1s ease-in forwards;
+    }
+
+    @keyframes serve {
+      0% {
+        transform: translate(0, 0) rotate(0)
+      }
+
+      35% {
+        transform: translate(-20px, -60px) rotate(-90deg)
+      }
+
+      60% {
+        transform: translate(-40px, -120px) rotate(-200deg)
+      }
+
+      100% {
+        transform: translate(-20px, -140px) rotate(-320deg)
+      }
+    }
+
+    /* Mini-Netz Illustration (dezent) */
+    #mini-net {
+      opacity: .12
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+    ✅ So verwendest du das Widget:
+    1) Kopiere alles in deine Seite (am besten direkt vor </body>).  
+    2) Passe Farben oben in :root an.  
+    3) Texte/Jokes unten im JS anpassen.
+  -->
+
+  <div id="mascot-container" aria-live="polite" aria-label="Webseiten-Assistent, humorvoll">
+    <div id="mascot-card" aria-hidden="true"></div>
+
+    <!-- Klickfläche für Interaktionen -->
+    <div id="mascot-hitbox" title="Klick mich! Ich habe Sprüche auf Lager."></div>
+
+    <!-- Sprechblase -->
+    <div id="bubble" role="status">
+      <div id="bubble-text">Baggern, Pritschen, Schmettern — klick für einen Spruch 🏐</div>
+      <div class="toolbar">
+        <button class="btn" id="btn-joke" aria-label="Noch einen Spruch">Noch einen</button>
+        <button class="btn" id="btn-hide" aria-label="Blase schließen">Schließen</button>
+      </div>
+    </div>
+
+    <!-- Die Figur: reines SVG, keine Assets nötig -->
+    <svg id="mascot" viewBox="0 0 160 160" aria-hidden="true">
+      <!-- Körper -->
+      <defs>
+        <radialGradient id="g1" cx="40%" cy="35%" r="70%">
+          <stop offset="0%" stop-color="var(--accent-2)" stop-opacity=".95" />
+          <stop offset="100%" stop-color="var(--accent)" />
+        </radialGradient>
+      </defs>
+      <g>
+        <ellipse cx="80" cy="88" rx="58" ry="52" fill="url(#g1)" />
+        <ellipse cx="80" cy="42" rx="42" ry="32" fill="url(#g1)" opacity=".92" />
+        <circle cx="80" cy="118" r="20" fill="url(#g1)" opacity=".9" />
+      </g>
+
+      <!-- Gesicht -->
+      <g id="face">
+        <!-- Augen Weiß -->
+        <ellipse cx="60" cy="70" rx="16" ry="12" fill="#fff" />
+        <ellipse cx="100" cy="70" rx="16" ry="12" fill="#fff" />
+        <!-- Pupillen -->
+        <circle id="pupil-left" class="pupil" cx="60" cy="70" r="5" fill="#1f2937" />
+        <circle id="pupil-right" class="pupil" cx="100" cy="70" r="5" fill="#1f2937" />
+        <!-- Lider -->
+        <ellipse class="eyelid" cx="60" cy="70" rx="16" ry="12" fill="transparent" stroke="#1f293710"
+          stroke-width="2" />
+        <ellipse class="eyelid" cx="100" cy="70" rx="16" ry="12" fill="transparent" stroke="#1f293710"
+          stroke-width="2" />
+        <!-- Mund -->
+        <path d="M55 92 C 70 110, 90 110, 105 92" fill="none" stroke="#0b1324" stroke-width="4"
+          stroke-linecap="round" />
+      </g>
+
+      <!-- Arm zum Winken -->
+      <g class="arm">
+        <path d="M120 70 q18 -10 18 8 q0 16 -10 22" fill="none" stroke="#ffffff" stroke-width="10"
+          stroke-linecap="round" />
+      </g>
+
+      <!-- Volleyball (rechts an der Hand) -->
+      <g id="ball">
+        <circle cx="128" cy="68" r="12" fill="#fff" stroke="#e5e7eb" stroke-width="2" />
+        <path d="M116 68 a12 12 0 0 0 24 0" fill="none" stroke="#0b1324" stroke-width="1.5" opacity=".7" />
+        <path d="M128 56 a12 12 0 0 0 0 24" fill="none" stroke="#0b1324" stroke-width="1.5" opacity=".7" />
+        <path d="M120 60 a14 14 0 0 0 16 16" fill="none" stroke="#0b1324" stroke-width="1.5" opacity=".7" />
+      </g>
+
+      <!-- Kleines Netz-Symbol unten links -->
+      <g id="mini-net">
+        <rect x="18" y="110" width="36" height="10" fill="#fff" stroke="#e5e7eb" />
+        <path d="M18 110 h36 M18 115 h36 M18 120 h36 M24 110 v10 M30 110 v10 M36 110 v10 M42 110 v10 M48 110 v10"
+          stroke="#0b1324" stroke-width="0.6" opacity=".5" />
+      </g>
+
+      <!-- Schimmer -->
+      <ellipse cx="58" cy="46" rx="10" ry="6" fill="#fff" opacity=".7" />
+    </svg>
+  </div>
+
+  <script>
+    // --- Utilities ---
+    const $ = (sel, parent = document) => parent.querySelector(sel);
+    const bubble = $('#bubble');
+    const bubbleText = $('#bubble-text');
+    const hitbox = $('#mascot-hitbox');
+    const btnJoke = $('#btn-joke');
+    const btnHide = $('#btn-hide');
+    const pL = $('#pupil-left');
+    const pR = $('#pupil-right');
+    const container = $('#mascot-container');
+    const ball = document.getElementById('ball');
+
+    const JOKES = [
+      "Kein Aus! Ich bin immer im Spiel — außer du klickst auf Schließen.",
+      "Ich baggere keine Daten — nur Bälle.",
+      "Unsere Taktik: erst pritschen, dann pitchen.",
+      "Schmetterling? Nein, Schmetter-BALL!",
+      "Timeout? Nur wenn der Kaffee alle ist.",
+      "Service-Wüste? Nicht hier: Ich serviere Sprüche am laufenden Band.",
+      "Block? Gern — gegen Bugs.",
+      "Pro Tipp: Drück ‘V’ für einen Aufschlag!",
+    ];
+
+    let lastJoke = -1;
+    function nextJoke() {
+      let i; do { i = Math.floor(Math.random() * JOKES.length) } while (i === lastJoke);
+      lastJoke = i; return JOKES[i];
+    }
+
+    function showBubble(text) {
+      bubbleText.textContent = text || nextJoke();
+      bubble.classList.add('visible');
+      clearTimeout(showBubble._t);
+      showBubble._t = setTimeout(() => bubble.classList.remove('visible'), 4800);
+    }
+
+    // Klick-Interaktionen
+    hitbox.addEventListener('click', () => {
+      showBubble();
+      container.querySelector('#mascot-card').style.transform = 'translateY(-2px)';
+      setTimeout(() => container.querySelector('#mascot-card').style.transform = '', 120);
+      triggerServe();
+    });
+    btnJoke.addEventListener('click', e => { e.stopPropagation(); showBubble(); triggerServe(); });
+    btnHide.addEventListener('click', e => { e.stopPropagation(); bubble.classList.remove('visible'); });
+
+    // Tastatur: H = Hilfe, J = Witz, B = Blase toggeln
+    window.addEventListener('keydown', (e) => {
+      const k = e.key.toLowerCase();
+      if (k === 'h') { showBubble('Shortcuts: H = Hilfe, J = Witz, B = Blase, V = Volley-Aufschlag'); }
+      if (k === 'j') { showBubble(); triggerServe(); }
+      if (k === 'b') { bubble.classList.toggle('visible'); }
+      if (k === 'v') { triggerServe(); showBubble('Aufschlag! 🏐'); }
+    });
+
+    // Pupillen folgen Maus (sanft innerhalb des Augenrahmens)
+    document.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / rect.width; // normiert ca. -0.5 .. 0.5
+      const dy = (e.clientY - cy) / rect.height;
+      const max = 4; // maximale Pupillen‑Verschiebung in px
+      const tx = Math.max(-1, Math.min(1, dx)) * max;
+      const ty = Math.max(-1, Math.min(1, dy)) * max;
+      pL.style.transform = `translate(${tx}px, ${ty}px)`;
+      pR.style.transform = `translate(${tx}px, ${ty}px)`;
+    });
+
+    // Extern steuerbar: window.Mascot.say('Text')
+    window.Mascot = {
+      say(text) { showBubble(text); },
+      hide() { bubble.classList.remove('visible'); },
+      setColors(a, b) { document.documentElement.style.setProperty('--accent', a); document.documentElement.style.setProperty('--accent-2', b || a); }
+    };
+
+    // Serve-Animation
+    function triggerServe() {
+      if (!ball) return;
+      ball.classList.remove('serve');
+      void ball.offsetWidth; // reflow
+      ball.classList.add('serve');
+      setTimeout(() => ball.classList.remove('serve'), 1100);
+    }
+
+    // Erste Begrüßung verzögert anzeigen
+    setTimeout(() => showBubble('Willkommen! Baggern, Pritschen, Schmettern — klick für einen Spruch 🏐'), 800);
+  </script>
+</body>
+
+</html>
