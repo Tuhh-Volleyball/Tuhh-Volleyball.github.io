@@ -43,21 +43,6 @@
       pointer-events: auto;
     }
 
-    /* Karte/Badge hinter der Figur */
-    #mascot-card {
-      position: absolute;
-      bottom: -8px;
-      left: -8px;
-      right: -8px;
-      top: 28px;
-      background: var(--bg);
-      border: 1px solid rgba(0, 0, 0, .06);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .08));
-      transition: transform .2s ease;
-    }
-
     #mascot {
       width: 160px;
       height: 160px;
@@ -246,7 +231,6 @@
   -->
 
   <div id="mascot-container" aria-live="polite" aria-label="Webseiten-Assistent, humorvoll">
-    <div id="mascot-card" aria-hidden="true"></div>
 
     <!-- Klickfläche für Interaktionen -->
     <div id="mascot-hitbox" title="Klick mich! Ich habe Sprüche auf Lager."></div>
@@ -414,8 +398,6 @@
     // Klick-Interaktionen
     hitbox.addEventListener('click', () => {
       showBubble();
-      container.querySelector('#mascot-card').style.transform = 'translateY(-2px)';
-      setTimeout(() => container.querySelector('#mascot-card').style.transform = '', 120);
       triggerServe();
     });
     btnJoke.addEventListener('click', e => { e.stopPropagation(); showBubble(); triggerServe(); });
