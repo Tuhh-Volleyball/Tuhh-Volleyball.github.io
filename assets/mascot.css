@@ -201,13 +201,17 @@
 }
 
 /* Volleyball-Ball Animation */
-#ball {
-    transform-origin: 120px 70px;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .15));
+#mascot {
+    width: 160px;
+    height: 160px;
+    position: relative;
+    animation: bob 3.6s ease-in-out infinite;
+    transform-origin: center center; /* hinzufügen */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .15)); /* hinzufügen */
 }
 
-.serve #ball {
-    animation: serve 1s ease-in forwards;
+#mascot-container.serve #mascot {
+    animation: serve 0.5s ease-in forwards;
 }
 
 @keyframes serve {
@@ -215,16 +219,12 @@
         transform: translate(0, 0) rotate(0)
     }
 
-    35% {
-        transform: translate(-20px, -60px) rotate(-90deg)
-    }
-
-    60% {
-        transform: translate(-40px, -120px) rotate(-200deg)
+    30% {
+        transform: translate(-30px, -190px) rotate(-200deg)
     }
 
     100% {
-        transform: translate(-20px, -140px) rotate(-320deg)
+        transform: translate(-720px, -300px) rotate(-360deg)
     }
 }
 

@@ -8,7 +8,7 @@ const btnHide = $('#btn-hide');
 const pL = $('#pupil-left');
 const pR = $('#pupil-right');
 const container = $('#mascot-container');
-const ball = document.getElementById('ball');
+const mascot = $('#mascot');
 
 const JOKES = [
   "Kein Aus! Ich bin immer im Spiel — außer du klickst auf Schließen.",
@@ -78,11 +78,11 @@ window.Mascot = {
 
 // Serve-Animation
 function triggerServe() {
-  if (!ball) return;
-  ball.classList.remove('serve');
-  void ball.offsetWidth; // reflow
-  ball.classList.add('serve');
-  setTimeout(() => ball.classList.remove('serve'), 1100);
+  if (!mascot) return;
+  container.classList.remove('serve');  // auf container statt mascot
+  void container.offsetWidth; // reflow
+  container.classList.add('serve');     // auf container statt mascot
+  setTimeout(() => container.classList.remove('serve'), 1100);
 }
 
 // Erste Begrüßung verzögert anzeigen
