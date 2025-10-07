@@ -116,6 +116,9 @@
 
       // Alle anderen Standard-Texte
       el.innerHTML = value;
+
+      // Status ob es voll oder frei ist.
+      if (window.updateStatusTexts) window.updateStatusTexts();
     });
   }
 

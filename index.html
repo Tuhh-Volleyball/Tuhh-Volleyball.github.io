@@ -199,7 +199,7 @@
       <!-- Artikel-Überschriften & Texte -->
       <h2 id="trainingTitle">
         <span id="trainingTitleText">📅 Training & Infos</span>
-        <small id="inviteBadge" class="badge ok hidden">Einladungen heute aktiv</small>
+        <small id="inviteBadge" class="badge ok hidden">Leider voll :(</small>
       </h2>
 
       <p id="trainingNote"><strong>Hinweis:</strong> Im <u>Wintersemester</u> haben wir nur eine Gruppe.
@@ -208,27 +208,13 @@
         Im Wintersemester spielen wir in der Halle in der Nähe der Uni, im Sommersemester draußen Beachvolleyball.</p>
       <p id="waHint">Alle Trainingszeiten und Neuigkeiten teilen wir in unserer WhatsApp-Gruppe.</p>
 
-      <!-- ▼ Dieser Bereich wird nur an ausgewählten Tagen gezeigt -->
-      <div id="inviteBlock" class="grid hidden">
-        <div class="center">
-          <p id="inviteLead">👉 <strong>Wichtig:</strong> Der folgende Link führt zunächst in eine
-            <em>Interessierten-Gruppe</em>. Von dort bekommt ihr die Infos und Zugang zur eigentlichen Trainingsgruppe.
-          </p>
-          <p id="inviteCta"><a role="button" href="https://bit.ly/volleyballtuhh" target="_blank" rel="noopener">Hier
-              der Einladungslink für Interessierte</a></p>
-          <p class="secondary">Auf dem Handy einfach tippen.</p>
-        </div>
-        <div class="center">
-          <figure>
-            <img class="qr" src="assets/qr.jpg" alt="QR-Code zum WhatsApp-Einladungslink">
-            <figcaption id="qrCaption" class="secondary">Oder QR-Code scannen 📱</figcaption>
-          </figure>
-        </div>
+      <!-- ▼ AG-Statusanzeige -->
+      <div id="statusBlock" class="notice">
+        <strong id="statusHeadline">🏐 Noch Plätze frei!</strong><br>
+        <span id="statusText">Melde dich einfach per Mail, wenn du mitspielen möchtest.</span>
       </div>
-      <!-- ▲ Ende: nur zeitweise sichtbar -->
+      <!-- ▲ AG-Statusanzeige -->
 
-      <!-- Fallback, wenn Einladungen deaktiviert sind -->
-      <p id="inviteFallback" class="center">Weitere Informationen erhälst du per E-Mail (siehe unten).</p>
     </article>
 
 
@@ -370,6 +356,8 @@
   <script src="assets/menu.js" defer></script>
   <script src="assets/lang.js" defer></script>
   <script src="assets/nav-visibility.js" defer></script>
+  <script src="assets/status.js" defer></script>
+
 </body>
 
 </html>

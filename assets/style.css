@@ -142,9 +142,12 @@ body:has(#menuBackdrop:not([hidden])) .topnav {
   top: 0;
   right: 0;
   width: min(80vw, 320px);
-  min-height: 6rem; /* oder z. B. 10rem, je nach gewünschter Mindestgröße */
-  max-height: 90vh; /* Sicherheit: falls Inhalt irgendwann doch länger wird */
-  overflow: visible; /* keine Scrollbar */
+  min-height: 6rem;
+  /* oder z. B. 10rem, je nach gewünschter Mindestgröße */
+  max-height: 90vh;
+  /* Sicherheit: falls Inhalt irgendwann doch länger wird */
+  overflow: visible;
+  /* keine Scrollbar */
   padding: 1rem;
   margin: 0;
   display: flex;
@@ -201,9 +204,12 @@ body:has(#menuBackdrop:not([hidden])) .topnav {
 
 /* Seite nicht scrollen, wenn Menü offen */
 body:has(#menuBackdrop:not([hidden])) {
-  position: fixed;        /* verhindert Scrollen */
-  overflow-y: scroll; /* Scrollbar bleibt sichtbar */
-  touch-action: none; /* verhindert Touchscroll auf Mobilgeräten */
+  position: fixed;
+  /* verhindert Scrollen */
+  overflow-y: scroll;
+  /* Scrollbar bleibt sichtbar */
+  touch-action: none;
+  /* verhindert Touchscroll auf Mobilgeräten */
 }
 
 /* Responsive: unter 700px Desktop-Leiste ausblenden */
@@ -356,4 +362,40 @@ footer {
     padding-top: 1350px;
     /* auf Handy oft etwas mehr Platz nötig */
   }
+}
+
+.notice {
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.notice.free {
+  background-color: #e9ffe9;
+  border: 2px solid #39b54a;
+  color: #084d14;
+}
+
+.notice.waitlist {
+  background-color: #fff9e6;
+  border: 2px solid #f0c94d;
+  color: #7a5a00;
+}
+
+.notice.full {
+  background-color: #ffeaea;
+  border: 2px solid #ff4a4a;
+  color: #7a0000;
+}
+
+.notice.none {
+  display: none;
+}
+
+.notice.almost {
+  background-color: #fff6d5;
+  border: 2px solid #f1b400;
+  color: #6a4c00;
 }
