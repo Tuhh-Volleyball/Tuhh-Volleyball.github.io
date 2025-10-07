@@ -1,0 +1,234 @@
+#mascot-container {
+    --accent: #ffc016;
+    /* Spielfeld-Grün */
+    --accent-2: #38b1c2;
+    /* Beach-Sand */
+    --fg: #13141a;
+    --bg: rgba(255, 255, 255, .96);
+    --shadow: 0 10px 30px rgba(0, 0, 0, .12), 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+@media (prefers-color-scheme: dark) {
+    #mascot-container {
+        --fg: #eaeef7;
+        --bg: rgba(19, 20, 26, .92);
+    }
+}
+
+
+/* --- Container: unten rechts schwebend --- */
+#mascot-container {
+    position: fixed;
+    inset: auto 24px 24px auto;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    width: 180px;
+    height: 180px;
+    pointer-events: none;
+    /* Bubble klickbar lassen */
+}
+
+/* Click‑Area für Interaktionen */
+#mascot-hitbox {
+    position: absolute;
+    inset: 0;
+    pointer-events: auto;
+}
+
+#mascot {
+    width: 160px;
+    height: 160px;
+    position: relative;
+    animation: bob 3.6s ease-in-out infinite;
+}
+
+@keyframes bob {
+
+    0%,
+    100% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-6px)
+    }
+}
+
+/* Blick/Lidschlag */
+.pupil {
+    transition: transform .06s linear;
+}
+
+.eyelid {
+    animation: blink 5s infinite;
+    transform-origin: center;
+}
+
+@keyframes blink {
+
+    0%,
+    97%,
+    100% {
+        transform: scaleY(1)
+    }
+
+    98% {
+        transform: scaleY(.05)
+    }
+
+    99% {
+        transform: scaleY(1)
+    }
+}
+
+/* Winken bei Hover/Klick */
+.arm {
+    transform-origin: 125px 70px;
+}
+
+#mascot-container:hover .arm {
+    animation: wave .9s ease-in-out infinite;
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+
+    50% {
+        transform: rotate(-16deg)
+    }
+}
+
+/* Sprechblase */
+#bubble {
+    position: absolute;
+    right: 180px;
+    bottom: 90px;
+    max-width: 280px;
+    pointer-events: auto;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid rgba(0, 0, 0, .06);
+    padding: 12px 14px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(6px) scale(.98);
+    transition: all .18s ease;
+    font: 500 14px/1.35 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* PicoCSS-Overrides nur im Maskottchen */
+#mascot-container #bubble .btn {
+    appearance: none;
+    background: transparent !important;
+    color: inherit !important;
+    border: 1px solid currentColor !important;
+    border-radius: 999px;
+    padding: 6px 10px;
+    line-height: 1;
+    font: 500 12px/1 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+    box-shadow: none !important;
+}
+
+#mascot-container #bubble .btn:hover,
+#mascot-container #bubble .btn:focus {
+    background: transparent !important;
+    outline: none;
+    opacity: 1;
+}
+
+#bubble.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+#bubble:after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    bottom: 12px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg);
+    border: 1px solid rgba(0, 0, 0, .06);
+    border-left: none;
+    border-bottom: none;
+    transform: rotate(45deg);
+    box-shadow: 8px -8px 0 var(--bg);
+    /* Kanten kaschieren */
+}
+
+/* CTA/Buttonzeile (optional) */
+.toolbar {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.btn {
+    pointer-events: auto;
+    user-select: none;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: .9
+}
+
+.btn:hover {
+    opacity: 1
+}
+
+/* Bewegungsreduktion respektieren */
+@media (prefers-reduced-motion: reduce) {
+    #mascot {
+        animation: none
+    }
+
+    .eyelid {
+        animation: none
+    }
+
+    #mascot-card {
+        transition: none
+    }
+}
+
+/* Volleyball-Ball Animation */
+#ball {
+    transform-origin: 120px 70px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .15));
+}
+
+.serve #ball {
+    animation: serve 1s ease-in forwards;
+}
+
+@keyframes serve {
+    0% {
+        transform: translate(0, 0) rotate(0)
+    }
+
+    35% {
+        transform: translate(-20px, -60px) rotate(-90deg)
+    }
+
+    60% {
+        transform: translate(-40px, -120px) rotate(-200deg)
+    }
+
+    100% {
+        transform: translate(-20px, -140px) rotate(-320deg)
+    }
+}
+
+/* Mini-Netz Illustration (dezent) */
+#mini-net {
+    opacity: .12
+}
