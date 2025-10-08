@@ -1,6 +1,6 @@
 
 // Status wählen: "free", "almost", "waitlist", "full" oder "none"
-const status = "free";
+const status = "almost";
 
 const i18nStatus = {
   de: {
