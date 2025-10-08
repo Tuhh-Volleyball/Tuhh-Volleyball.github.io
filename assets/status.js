@@ -1,6 +1,8 @@
 
 // Status wählen: "free", "almost", "waitlist", "full" oder "none"
-const status = "full";
+// in index.html auch anpassen! Dort einmal die Zahl erhöhen bei <script src="assets/status.js?v=4" defer></script>
+// (damit der Browser die neue Datei lädt und nicht die gecachte)
+const status = "none";
 
 const i18nStatus = {
   de: {
