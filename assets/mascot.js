@@ -86,4 +86,4 @@ function triggerServe() {
 }
 
 // Erste Begrüßung verzögert anzeigen
-setTimeout(() => showBubble('Willkommen! Baggern, Pritschen, Schmettern — klick für einen Spruch 🏐'), 800);
+setTimeout(() => showBubble('Willkommen! Baggern, Pritschen, Schmettern — klick für einen Spruch 🏐'), 3000);

@@ -3,7 +3,7 @@
   // Trage hier pro Semester EINEN Tag als Start/Ende ein – oder auch mehrere Fenster.
   const INVITE_WINDOWS = [
     // Beispiel: AG-Vorstellung am 2025-10-15
-    { start: '2025-09-09', end: '2025-09-10' },
+    { start: '2025-09-09', end: '2025-09-08' },
     // nächstes Semester einfach eine neue Zeile ergänzen
     // { start: '2026-04-14', end: '2026-04-14' },
   ];
