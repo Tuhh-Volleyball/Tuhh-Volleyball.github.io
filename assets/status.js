@@ -18,8 +18,10 @@ const i18nStatus = {
     },
     waitlist: {
       headline: "🕓 Warteliste aktiv!",
-      text: 'Aktuell sind alle Plätze belegt, aber du kannst dich gerne auf die <strong>Warteliste</strong> setzen lassen. \
-Schreib uns einfach eine kurze E-Mail mit ein paar Infos über dich.',
+      text: 'Aktuell sind alle Plätze belegt, aber du kannst dich gerne auf die <strong>Warteliste</strong> setzen lassen. \<br> \
+            Schreib uns einfach eine kurze E-Mail mit ein paar Infos über dich. \ <br> \
+            <span class="secondary">In der Zwischenzeit kannst du dich beim \
+            <a href="https://www.hochschulsport.uni-hamburg.de/sportcampus/vona-z.html" target="_blank" rel="noopener noreferrer">Hochschulsport der Uni Hamburg</a> umschauen.</span>',
       badge: "Warteliste",
     },
     full: {
@@ -42,8 +44,10 @@ Schreib uns einfach eine kurze E-Mail mit ein paar Infos über dich.',
     },
     waitlist: {
       headline: "🕓 Waiting list open!",
-      text: 'All spots are currently taken, but you can join our <strong>waiting list</strong>. \
-Just send us a short email with some info about you.',
+      text: 'All spots are currently taken, but you can join our <strong>waiting list</strong>. \ <br> \
+            Just send us a short email with some info about you. \ <br> \
+            <span class="secondary">Meanwhile, you can check out \
+            <a href="https://www.hochschulsport.uni-hamburg.de/sportcampus/vona-z.html" target="_blank" rel="noopener noreferrer">University of Hamburg’s Campus Sports</a>.</span>',
       badge: "Waiting list",
     },
     full: {
