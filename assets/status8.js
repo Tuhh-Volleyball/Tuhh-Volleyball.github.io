@@ -2,7 +2,7 @@
 // Status wählen: "free", "almost", "waitlist", "full" oder "none"
 // in index.html auch anpassen! Dort einmal die Zahl erhöhen bei <script src="assets/status.js?v=4" defer></script>
 // (damit der Browser die neue Datei lädt und nicht die gecachte)
-const status = "waitlist"; // "free", "almost", "waitlist", "full", "none"
+const status = "almost"; // "free", "almost", "waitlist", "full", "none"
 
 const i18nStatus = {
   de: {
@@ -13,7 +13,7 @@ const i18nStatus = {
     },
     almost: {
       headline: "⚡ Fast voll!",
-      text: "Wir haben nur noch wenige freie Plätze. Wenn du mitspielen möchtest, melde dich am besten <strong>sofort per Mail</strong>!",
+      text: "Wir haben nur noch wenige freie Plätze. Wenn du mitspielen möchtest, melde dich am besten <strong> per Mail</strong>!",
       badge: "Fast voll",
     },
     waitlist: {
@@ -39,7 +39,7 @@ const i18nStatus = {
     },
     almost: {
       headline: "⚡ Almost full!",
-      text: "Only a few spots left — send us an email quickly if you’d like to join!",
+      text: "Only a few spots left — send us an email if you’d like to join!",
       badge: "Almost full",
     },
     waitlist: {
