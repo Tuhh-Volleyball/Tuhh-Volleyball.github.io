@@ -26,9 +26,13 @@ const i18nStatus = {
     },
     full: {
       headline: "⚠️ Aktuell keine Aufnahme",
-      text: 'Momentan können wir leider keine neuen Spieler*innen aufnehmen. <span class="secondary">Voraussichtlich wieder Plätze ab dem <u>Sommersemester 2026</u>.</span>',
+      text: 'Momentan können wir leider keine neuen Spieler*innen aufnehmen. \
+         <span class="secondary">Voraussichtlich wieder Plätze ab dem <u>Sommersemester 2026</u>.</span> <br> \
+         <span class="secondary">In der Zwischenzeit kannst du dich beim \
+         <a href="https://www.hochschulsport.uni-hamburg.de/sportcampus/vona-z.html" target="_blank" rel="noopener noreferrer">Hochschulsport der Uni Hamburg</a> umschauen.</span>',
       badge: "Keine Aufnahme",
     },
+
     none: { headline: "", text: "", badge: "" },
   },
   en: {
@@ -52,9 +56,13 @@ const i18nStatus = {
     },
     full: {
       headline: "⚠️ Currently full",
-      text: 'Unfortunately, we can’t accept new players right now. <span class="secondary">We expect new spots from <u>Summer term 2026</u>.</span>',
+      text: 'Unfortunately, we can’t accept new players right now. \
+         <span class="secondary">We expect new spots from <u>Summer term 2026</u>.</span> <br> \
+         <span class="secondary">Meanwhile, you can check out \
+         <a href="https://www.hochschulsport.uni-hamburg.de/sportcampus/vona-z.html" target="_blank" rel="noopener noreferrer">University of Hamburg’s Campus Sports</a>.</span>',
       badge: "Full",
     },
+
     none: { headline: "", text: "", badge: "" },
   },
 };
