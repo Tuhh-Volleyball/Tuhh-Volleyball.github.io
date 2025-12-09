@@ -145,13 +145,14 @@
         const info = texts[lang]; // { subject, body }
         if (!info) return;
 
-        // Adresse zusammenbauen, ohne "volleyball@tuhh.de" irgendwo als Klartext zu haben
+        // Adresse zusammenbauen, ohne "meinSecretMail@Domain.de" irgendwo als Klartext zu haben
         const user = MAIL_USER;
         const domain = MAIL_DOMAIN;
 
         // "@" aus Charcode erzeugen, damit nicht mal das direkt im Code steht
-        const atChar = String.fromCharCode(64); // "@"
-        const addressHref = user + atChar + domain;
+        // const atChar = String.fromCharCode(64); // "@"
+        // const addressHref = user + atChar + domain;
+        const addressHref = user + '(at)' + domain;
 
         // Sichtbarer Text mit (at) als einfacher Anti-Spam-Trick
         const addressText = user + '(at)' + domain;
