@@ -1,4 +1,7 @@
 (function () {
+    const MAIL_USER = 'volleyball';
+    const MAIL_DOMAIN = 'tuhh.de';
+
   // --- 1) Wörterbuch: Schlüssel = Element-ID, Wert = { de, en } ---
   const DICT = {
     // Head/Nav
@@ -76,9 +79,43 @@
       en: 'Best regards,<br>Your organizing team 🙂<br><strong>Alexandra, Clemens, Sascha</strong>'
     },
     contactMail: {
-      de: 'mailto:volleyball(at)tuhh.de?subject=Deine%20Anfrage%20zur%20Volleyball%20AG&body=Hallo%20liebes%20Orga-Team%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Volleyball%20AG%20und%20w%C3%BCrde%20gerne%20weitere%20Infos%20zu%20den%20Trainingszeiten%20erhalten.%0D%0A%0D%0Akurz%20zu%20mir%3A%0D%0A%5BStell%20dich%20kurz%20vor%20%3A)%0D%0A-%20Ich%20habe%20bereits%20Volleyball-Erfahrung%3A%20JA%20/%20NEIN%0D%0A-%20Ich%20habe%20schon%20mal%20gespielt%20z.B.%20bei%20______________%0D%0A-%20Ich%20kenne%20ein%20paar%20Regeln%3A%20JA%20/%20NEIN%0D%0A-%20Ich%20studiere%20an%20der%20TUHH%20im%20Studiengang%3A%20______________%0D%0A%5D%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe%2C%0D%0A%5BDein%20Name%5D',
-      en: 'mailto:volleyball(at)tuhh.de?subject=Your%20inquiry%20about%20the%20Volleyball%20Club&body=Hello%20Volleyball%20team,%0A%0AI%20am%20interested%20in%20joining%20the%20Volleyball%20Club%20and%20would%20like%20to%20receive%20more%20information%20about%20the%20training%20schedule.%0A%0AA%20few%20details%20about%20me:%0A-%20I%20have%20played%20volleyball%20before:%20YES%20/%20NO%0A-%20I%20played%20previously%20at%20______________%0A-%20I%20know%20some%20rules:%20YES%20/%20NO%0A-%20I%20study%20at%20TUHH%20in%20the%20program:%20______________%0A%0ABest%20regards,%0A[Your%20Name]'
+      de: {
+        subject: 'Deine Anfrage zur Volleyball AG',
+        body: [
+          'Hallo liebes Orga-Team,',
+          'ich interessiere mich für die Volleyball AG und würde gerne weitere Infos zu den Trainingszeiten erhalten.',
+          '',
+          'kurz zu mir:',
+          '[Stell dich kurz vor :)',
+          '- Ich habe bereits Volleyball-Erfahrung: JA / NEIN',
+          '- Ich habe schon mal gespielt z.B. bei _____________',
+          '- Ich kenne ein paar Regeln: JA / NEIN',
+          '- Ich studiere an der TUHH im Studiengang: _____________',
+          ']',
+          '',
+          'Viele Grüße,',
+          '[Dein Name]'
+        ].join('\n')
+      },
+      en: {
+        subject: 'Your inquiry about the Volleyball Club',
+        body: [
+          'Hello Volleyball team,',
+          '',
+          'I am interested in joining the Volleyball Club and would like to receive more information about the training schedule.',
+          '',
+          'A few details about me:',
+          '- I have played volleyball before: YES / NO',
+          '- I played previously at _____________',
+          '- I know some rules: YES / NO',
+          '- I study at TUHH in the program: _____________',
+          '',
+          'Best regards,',
+          '[Your Name]'
+        ].join('\n')
+      }
     },
+
 
 
     // Footer
@@ -105,9 +142,30 @@
 
       // Sonderfall: Mail-Link
       if (id === 'contactMail') {
-        el.setAttribute('href', value);
+        const info = texts[lang]; // { subject, body }
+        if (!info) return;
+
+        // Adresse zusammenbauen, ohne "volleyball@tuhh.de" irgendwo als Klartext zu haben
+        const user = MAIL_USER;
+        const domain = MAIL_DOMAIN;
+
+        // "@" aus Charcode erzeugen, damit nicht mal das direkt im Code steht
+        const atChar = String.fromCharCode(64); // "@"
+        const addressHref = user + atChar + domain;
+
+        // Sichtbarer Text mit (at) als einfacher Anti-Spam-Trick
+        const addressText = user + '(at)' + domain;
+
+        const href =
+          'mailto:' + addressHref +
+          '?subject=' + encodeURIComponent(info.subject) +
+          '&body=' + encodeURIComponent(info.body);
+
+        el.setAttribute('href', href);
+        el.textContent = addressText;
         return;
       }
+
       if (el.tagName === 'A') {
         el.textContent = value;
         return;
