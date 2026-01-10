@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "Gruppe",
-  "message": "🏐 Noch Plätze frei!",
-  "color": "green"
+  "message": "Aktuell keine Aufnahme",
+  "color": "red"
 }
