@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "Gruppe",
-  "message": "voll",
-  "color": "red"
+  "message": "offen",
+  "color": "green"
 }
